@@ -1,0 +1,127 @@
+.lsvrp-modal {
+  width: 500px;
+  height: 450px;
+  .header {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    color: #F2FAFF;
+    background-color: rgba(21, 146, 214, 0.9);
+    font-family: "Source Sans", serif;
+    text-align: center;
+  }
+  .body {
+    height: 300px;
+    background-color: rgba(20, 20, 20, 0.65);
+    color: rgba(242, 250, 255, 0.8);
+    font-family: "Source Sans", serif;
+    .desc {
+      padding: 15px;
+      height: 40px;
+      overflow: hidden;
+      font-family: "Source Sans", serif;
+      font-size: 14px;
+      text-align: justify;
+    }
+    .input-div {
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .input {
+      width: 90%;
+      padding: 10px;
+      color: rgba(200, 200, 200, 0.8);
+      font-family: "Source Sans", serif;
+      background-color: rgba(50, 50, 50, 0.5);
+      border: none;
+      outline: none;
+    }
+    &.enter-text {
+      height: 150px;
+    }
+  }
+  .footer {
+    height: 50px;
+    width: 100%;
+    font-family: "Source Sans", serif;
+    .button-half {
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      width: 50%;
+      background: rgba(20, 20, 20, 0.6);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      float: left;
+    }
+    .button-full {
+      height: 50px;
+      line-height: 50px;
+      width: 100%;
+      background: rgba(20, 20, 20, 0.6);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+.footer {
+  .color-blue, .color-red {
+    background: rgba(20, 20, 20, 0.6) !important;
+  }
+  .color-blue:hover {
+    background: rgba(21, 146, 214, 0.9) !important;
+  }
+  .color-red:hover {
+    background: rgba(162, 37, 34, 0.9) !important;
+  }
+}
+
+.lsvrp-modal .body {
+  .list-header {
+    color: rgba(200, 200, 200, 0.5);
+    font-family: "Source Sans Bold", serif;
+    font-size: 12px;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    .column {
+      display: inline-block;
+      overflow: hidden;
+      padding-top: 5px;
+      padding-left: 5px;
+    }
+  }
+  .list-body {
+    height: 275px;
+    line-height: 18px;
+    font-family: "Source Sans", serif;
+    font-size: 14px;
+    overflow-y: scroll;
+    .row {
+      /* background-color: rgba(0, 0, 0, 0.5); */
+      height: 25px;
+      line-height: 25px;
+      &:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      &.active {
+        background: rgba(100, 100, 100, 0.8);
+      }
+      .column {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        padding-left: 8px;
+      }
+    }
+  }
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+}

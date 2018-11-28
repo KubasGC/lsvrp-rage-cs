@@ -1,0 +1,671 @@
+.phone-main {
+    position: absolute;
+    right: 100px;
+    bottom: 20px;
+    background-image: url('../img/phone/device.png');
+    background-size: 100% 100%;
+    width:231px;
+    height:434px;
+    z-index: 2;
+    pointer-events: none;
+    animation:showPhone 1.5s ease-out forwards;
+    display: none;
+}
+
+.phone-wallpaper {
+    z-index: 1;
+    position: absolute;
+    right: 102px;
+    bottom: 20px;
+    background-image: url(../img/phone/wallpapers/2.png);
+    background-size: 100% 100%;
+    width: 226px;
+    height: 434px;
+    border-radius: 20px;
+    animation:showPhone 1.5s ease-out forwards;
+    display: none;
+}
+
+.phone-clock-main {
+    color:white;
+    position: absolute;
+    right: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    top: 55px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 21px;
+    margin: auto;
+    text-shadow: 2px 2px rgba(0,0,0,0.2);
+}
+
+.phone-notification-bar {
+    position: absolute;
+    right: 104px;
+    bottom: 410px;
+    color: white;
+    font-family: Verdana, Geneva, sans-serif;
+    line-height:19px;
+    background-color: rgba(0,0,0,0.6);
+    width:222px;
+    height:20px;
+    font-size: 10px;
+    z-index: 2;
+    animation:showPhone2 1.5s ease-out forwards;
+    display: none;
+}
+
+.phone-notification-bar-app {
+    position: absolute;
+    color: white;
+    font-family: Verdana, Geneva, sans-serif;
+    line-height:19px;
+    top: 2px;
+    background-color: rgba(0,0,0,0.6);
+    width:222px;
+    left:5px;
+    height:20px;
+    font-size: 10px;
+    z-index: 3;
+}
+
+.phone-icons {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    background-size: 100% 100%;
+    width:210px;
+    height:60px;
+    z-index: 3;
+    pointer-events: auto;
+}
+
+.phone-icon-phone {
+    background-image: url('../img/phone/icons/phone.png');
+    background-size: 100% 100%;
+    width:35px;
+    height:35px;
+    cursor: pointer;
+    float:left;
+}
+
+.phone-icon-contacts {
+    background-image: url('../img/phone/icons/contacts.png');
+    background-size: 100% 100%;
+    width:35px;
+    height:35px;
+    cursor: pointer;
+    float:left;
+    margin-left: 16px;
+}
+
+.phone-icon-sms {
+    background-image: url('../img/phone/icons/sms.png');
+    background-size: 100% 100%;
+    width:35px;
+    height:35px;
+    cursor: pointer;
+    float:left;
+    margin-left: 16px;
+}
+
+.phone-icon-settings {
+    background-image: url('../img/phone/icons/settings.png');
+    background-size: 100% 100%;
+    width:35px;
+    height:35px;
+    cursor: pointer;
+    float:left;
+    margin-left: 16px;
+}
+
+.phone-app-bg {
+    z-index: 1;
+    position: absolute;
+    /*background-color: rgb(230, 227, 227);*/
+    background-size: 100% 100%;
+    width:225px;
+    height:390px;
+    display: none;
+    animation:app-comming 0.2s ease-out forwards;
+}
+
+.phone-app {
+    z-index: 1;
+    position: absolute;
+    right: 102px;
+    bottom: 42px;
+    width: 225px;
+    height: 390px;
+    overflow: hidden;
+    /* overflow-y: auto; */
+}
+
+.phone-app-title {
+    width:100%;
+    height:10px;
+    line-height:10px;
+    color: white;
+    background-color: #4286f4;
+    padding:10px;
+    font-size: 12px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.phone-app-content {
+    padding:18px;
+    font-size: 12px;
+    font-family: Verdana, Geneva, sans-serif;
+    background-color: rgb(230, 227, 227);
+    height:296px;
+    width: 190px;
+    overflow-y:auto;
+}
+
+.phone-app-list-item {
+    width: 100%;
+    padding:13px;
+    font-family: Verdana, Geneva, sans-serif;
+    cursor: pointer;
+    font-style: bold;
+    background-color: rgb(230, 227, 227);
+}
+
+.phone-app-list-item:hover {
+    width: 100%;
+    background-color: #81abef;
+    color: white;
+}
+
+.phone-app-phone {
+    z-index: 3;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    display: none;
+}
+
+.phone-app-settings {
+    z-index: 3;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    display: none;
+}
+
+.phone-app-settings-wallpaper {
+    z-index: 4;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    display: none;
+}
+
+.phone-app-settings-wallpaper-premium {
+    z-index: 4;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    display: none;
+}
+
+.phone-app-wallpaper-gallery {
+    width: 48%;
+    outline: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.phone-app-wallpaper-gallery:hover {
+    box-shadow: 2px 2px rgba(0,0,0,0.2);
+}
+
+.phone-app-phone-number-input {
+    text-align: right;
+    width: 221px;
+    font-size: 24px;
+    height: 84px;
+}
+
+.phone-app-phone-button {
+    width: 33%;
+    height: 100%;
+    background-color: #4286f4;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    float: left;
+    cursor:pointer;
+    outline: 1px solid black;
+}
+
+.phone-app-phone-button:hover {
+    background-color: #6aa2fd;
+}
+
+.phone-app-phone-buttons-row {
+    height:50px;
+    width: 100%;
+}
+
+.phone-app-phone-button-call {
+    width:50%;
+    float:left;
+    cursor: pointer;
+}
+
+.phone-app-phone-button-undo {
+    width:50%;
+    cursor: pointer;
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.phone-app-wallpaper-premium-link {
+    width: 172px;
+    font-size: 12px;
+    padding: 10px 10px 10px 10px;
+    height: 84px;
+    resize: none;
+}
+
+.phone-app-wallpaper-premium-save {
+    width: 70px;
+    background-color: #4286f4;
+    color: white;
+    height:30px;
+    line-height: 30px;
+}
+
+.phone-app-wallpaper-premium-save:hover {
+    background-color: #6aa2fd;
+}
+
+.phone-app-contacts {
+    z-index: 3;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    background-color: rgb(230, 227, 227);
+    display: none;
+}
+
+.phone-app-contacts-show {
+    z-index: 5;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    background-color: rgb(230, 227, 227);
+    display: none;
+}
+
+.phone-app-incomming-call {
+    z-index: 3;
+    position: absolute;
+    top: 22px;
+    width:226px;
+    height:390px;
+    background: linear-gradient(to bottom, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%);
+    display: none;
+}
+
+.phone-app-incomming-call-avatar {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(to bottom, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%);
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 76px;
+    margin-top: 33px;
+    margin-right: 5px;
+    border: 1px solid lightgrey;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.phone-app-incomming-call-name {
+    font-family: Verdana, Geneva, sans-serif;
+    color: white;
+    font-size: 18px;
+}
+
+.phone-app-incomming-call-green {
+    background: -webkit-linear-gradient(top, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 15px;
+    margin-left:45px;
+    margin-top:110px;
+    cursor: pointer;
+    animation: jump 0.5s ease 0s infinite normal ;
+}
+
+.phone-app-incomming-call-red {
+    background: linear-gradient(to bottom, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 15px;
+    float:left;
+    margin-top:110px;
+    cursor: pointer;
+    animation: jump 0.5s ease 0s infinite normal ;
+}
+
+.phone-app-incomming-call-green-img {
+    width: 67%;
+    /* line-height: 98px; */
+    position: relative;
+    top: 9px;
+    left: 0px;
+}
+
+.phone-app-incomming-call-red-img {
+    width: 67%;
+    /* line-height: 98px; */
+    position: relative;
+    top: 9px;
+    left: 0px;
+}
+
+.phone-app-contacts-avatar {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    /*background-color: grey;*/
+    background: linear-gradient(to bottom, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%);
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    float: left;
+    line-height: 25px;
+    margin-top: -3px;
+    margin-right: 5px;
+}
+
+.phone-app-contacts-show-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(to bottom, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%);
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    float: left;
+    font-size: 24px;
+    line-height: 50px;
+    margin-top: -3px;
+    margin-right: 5px;
+    border: 1px solid lightgrey;
+    float:left;
+}
+
+
+.phone-app-contacts-show-name {
+    width: 129px;
+    margin-top: 19px;
+    font-size: 16px;
+}
+
+.phone-app-contacts-show-number {
+    width: 100%;
+    margin-top: 19px;
+    font-size: 16px;
+}
+
+.phone-app-contacts-show-button {
+    width: 48%;
+    height: 55px;
+    float: left;
+    background-color: grey;
+    margin-top: 2px;
+    margin-left: 2px;
+    text-align: center;
+    line-height: 55px;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.bg-red {
+    background-color: rgb(192, 16, 16);
+}
+
+.bg-green {
+    background-color: green;
+}
+
+.bg-blue {
+    background-color: #5199c5;
+}
+
+.bg-yellow {
+    background-color: #ff9600;
+}
+
+.bg-red:hover {
+    background-color: rgb(114, 8, 8);
+}
+
+.bg-green:hover {
+    background-color: rgb(11, 90, 11);
+}
+
+.bg-blue:hover {
+    background-color: #27648a;
+}
+
+.bg-yellow:hover {
+    background-color: #a7670e;
+}
+
+.input-phone {
+    border: none;
+    border-bottom: 2px solid #aec3e6;
+    background-color: rgba(0,0,0,0.0);
+    outline: none;
+}
+
+.input-phone:focus {
+    border-bottom: 2px solid #4286f3;
+}
+
+.phone-app-contacts-add-button {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: #4285f3;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    font-size: 24px;
+    float: left;
+    line-height: 36px;
+    position: absolute;
+    right: 22px;
+    bottom: 35px;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.phone-app-messages {
+    z-index: 4;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    background-color: rgb(230, 227, 227);
+    display: none;
+}
+
+.phone-app-messages-show {
+    z-index: 5;
+    position: absolute;
+    top: 22px;
+    width:231px;
+    height:390px;
+    background-color: rgb(230, 227, 227);
+    display: none;
+}
+
+.phone-app-messages-name {
+    line-height:7px;
+    font-weight:800;
+    font-size: 13px;
+}
+
+.phone-app-messages-date {
+    font-size: 9px;
+    line-height: 20px;
+    color: #7b7b7b;
+}
+
+.messages-list {
+    height: 15px;
+}
+
+.phone-message-sender {
+    margin-top: 5px;
+    background-color: #aec3e6;
+    border-radius: 8px;
+    width: 70%;
+    float: left;
+    padding: 6px;
+    margin-left: 12px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+.phone-message-own {
+    background-color: lightgrey;
+    border-radius: 8px;
+    width: 70%;
+    float: right;
+    margin-top: 5px;
+    margin-right: 17px;
+    padding: 6px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+.phone-message-author {
+    font-weight: 600;
+    font-size: 8px;
+}
+
+.phone-messages-input {
+    resize: none;
+    height: 50px;
+    width: 100%;
+}
+
+.phone-messages-send {
+    text-align: center;
+    background-color: #01ad05;
+    height: 34px;
+    margin-top: -4px;
+    line-height: 34px;
+    color: white;
+    font-weight: 600;
+    font-family: Verdana, Geneva, sans-serif;
+    cursor:pointer;
+}
+
+.phone-messages-send:hover {
+    background-color: #18d81b;
+}
+
+/* ANIMACJE */
+@keyframes showPhone {
+    0% {
+        bottom: -444px;
+    }
+    100% {
+        bottom: 20px;
+    }
+}
+
+@keyframes showPhone2 {
+    0% {
+        bottom: -33px;
+    }
+    100% {
+        bottom: 410px;
+    }
+}
+
+@keyframes jump {
+    0%{
+      transform: translateY(0);
+    }
+    20%{
+      transform: translateY(0);
+    }
+    40%{
+      transform: translateY(-1px);
+    }
+    50%{
+      transform: translateY(0);
+    }
+    60%{
+      transform: translateY(-1px);
+    }
+    80%{
+      transform: translateY(0);
+    }
+    100%{
+      transform: translateY(0);
+    }
+}
+
+@keyframes app-comming
+{ from {opacity:0; top:230px;}
+to {opacity: 1; top: 0px;}
+}
+
+
+.phone-app-content ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+}
+.phone-app > ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+.phone-app > ::-webkit-scrollbar-thumb {
+    background: #acacac;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+.phone-app > ::-webkit-scrollbar-thumb:hover {
+    background: #a2a2a2;
+}
+.phone-app > ::-webkit-scrollbar-thumb:active {
+    background: #919191;
+}
+.phone-app > ::-webkit-scrollbar-track {
+    background: #ffffff;
+    border: 0px none #ffffff;
+    border-radius: 48px;
+}
+.phone-app > ::-webkit-scrollbar-track:hover {
+    background: #ffffff;
+}
+.phone-app > ::-webkit-scrollbar-track:active {
+    background: #ffffff;
+}
+.phone-app > ::-webkit-scrollbar-corner {
+    background: transparent;
+}

@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Los Santos V Role Play</title>
+
+    <link href="../Includes/css/fonts.css" rel="stylesheet">
+    <link href="../Includes/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../Includes/css/font_comfortaa.css" type="text/css" rel="stylesheet" />
+    <link href="../Includes/css/font_bebasneue.css" type="text/css" rel="stylesheet" />
+    <link href="../Includes/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <script src="../Includes/js/jquery.js"></script>
+    <script src="../Includes/js/jquery.ui.min.js"></script>
+    <script src="../Includes/js/materialize.min.js"></script>
+    <script src="../Includes/js/interact.min.js"></script>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bank-container" class="draggable" style="display: none;">
+        <div class="draggable-handler" style="height: 30px; width: 100%; background-color: rgba(0, 0, 0, 0.8);">
+            <div style="display: inline-block; margin-left: 5px; vertical-align: middle; font-family: 'Comfortaa'; color: #ffedc5; margin-top: 7px;">
+                LSVRP :: Bankomat
+            </div>
+        </div>
+        <div class="bank-content win-footer">
+            <div class="left" style="width: 40%;">
+                <img src="../Includes/images/mazebank.png" alt="MAZE BANK" style="width: 100%;" />
+            </div>
+            <div class="right info-div">
+                <div class="left">
+                    Numer konta<br />
+                    <input type="text" id="AccNum" disabled />
+                </div>
+                <div class="right">
+                    Stan konta<br />
+                    <input type="text" id="AccBalance" class="green-text" disabled />
+                </div>
+            </div>
+
+            <div class="center">
+                <input id="Kwota" class="kwota" placeholder="Kwota do wpłaty/wypłaty" />
+            </div>
+        </div>
+
+        <div id="bank-buttons">
+            <div id="Wplata" class="win-button win-button-accept">
+                WPŁATA
+            </div>
+            <div id="Wyplata" class="win-button win-button-cancel">
+                WYPŁATA
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="eq-body" style="display: none;">
+        <div class="row eq-page">
+            <div class="col s12 right-align" id="eq-choosedpage">strona - z -</div>
+        </div>
+
+        <div id="eq-items">
+            <div class="row eq-content center-align">
+                <div class="preloader-wrapper small active">
+                    <div class="spinner-layer spinner-green-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div><br />
+                ŁADOWANIE PRZEDMIOTÓW...
+            </div>
+        </div>
+
+        <div class="row eq-header">
+            <div class="col s5">Nazwa</div>
+            <div class="col s3 center-align">UID</div>
+            <div class="col s2 center-align">I</div>
+            <div class="col s2 center-align">II</div>
+        </div>
+
+        <div class="eq-name center-align">
+            PRZEDMIOTY
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+    <script src="../Includes/js/LSVRP.js"></script>
+</body>
+
+</html>

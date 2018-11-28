@@ -1,0 +1,94 @@
+$globalHeight: 400px;
+
+.lsvrp-charcreator {
+
+  width: 500px;
+  height: $globalHeight + 140;
+
+  .header {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    color: #F2FAFF;
+    background-color: rgba(21, 146, 214, 0.9);
+    font-family: "Source Sans", serif;
+    text-align: center;
+  }
+
+  .body {
+    background: rgba(16, 16, 16, 0.6);
+    height: $globalHeight;
+    overflow: auto;
+
+    .row {
+      height: 20px;
+      line-height: 20px;
+      padding: 10px;
+      color: #ffffff;
+      font-family: "Source Sans", serif;
+
+      &.active {
+        color: #000000 !important;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .text {
+        float: left;
+        display: inline-block;
+        width: 50%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &.left {
+          text-align: left;
+        }
+        &.right {
+          text-align: right;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .color-text {
+	  // height: 40px;
+	  background: rgba(16, 16, 16, 0.6);
+	  color: rgba(255, 255, 255, 0.7);
+	  margin-top: 1px;
+	  font-family: "Source Sans", serif;
+	  font-size: 18px;
+	  padding: 10px;
+	  text-align: center;
+
+	  .enter {
+		  color: rgba(255, 255, 255, 0.9);
+	  }
+  }
+
+  .grid {
+    height: 100px;
+    background: rgba(16, 16, 16, 0.6);
+    margin-top: 1px;
+    line-height: 100px;
+
+    .img {
+      position: relative;
+      top: 33px;
+      width: 169px;
+      height: 34px;
+      background: url("../images/xygrid.png") center center no-repeat;
+      margin: 0 auto;
+
+      .point {
+        position: absolute;
+        left: 78;
+        top: 11px;
+        width: 12px;
+        height: 12px;
+        background: #fff;
+        border-radius: 50%;
+      }
+    }
+  }
+}

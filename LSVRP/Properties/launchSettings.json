@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "LSVRP": {
+      "commandName": "Executable",
+      "executablePath": "E:\\LSVRPRAGE\\server.exe",
+      "workingDirectory": "E:\\LSVRPRAGE"
+    }
+  }
+}

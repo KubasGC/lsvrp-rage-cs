@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Canela';
+  font-style: normal;
+  font-weight: 400;
+  src: local('canela'), local('canela_roman'), url('../fonts/canela/canela_roman.woff') format('woff'), url('../fonts/canela/canela_roman.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Canela';
+  font-style: normal;
+  font-weight: 700;
+  src: local('canela'), local('canela_bold'), url('../fonts/canela/canela_bold.woff') format('woff'), url('../fonts/canela/canela_bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Canela';
+  font-style: normal;
+  font-weight: 300;
+  src: local('canela'), local('canela_light'), url('../fonts/canela/canela_light.woff') format('woff'), url('../fonts/canela/canela_light.woff2') format('woff2');
+}

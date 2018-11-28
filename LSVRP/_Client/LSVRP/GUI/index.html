@@ -1,0 +1,255 @@
+﻿<html>
+<head>
+	<meta charset="utf-8" />
+
+	<link rel="stylesheet" type="text/css" href="css/keys.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-modal.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-anim.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-login.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-dashboard.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-tattoos.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-eq.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-penalty.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-charcreator.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lsvrp-progress-box.min.css">
+</head>
+<body>
+
+	<div class="container">
+		<!-- Dialog -->
+		<div id="lsvrp_dialog" class="lsvrp-modal drag" v-show="show" style="display: none">
+			<div class="header">{{ header }}</div>
+			<div class="body" v-if="type === 1">
+				<div class="list-header">
+					<div v-for="column in columns" :style="{width: column.Size + '%'}" class="column">{{ column.Name }}
+					</div>
+				</div>
+				<div class="list-body">
+					<div v-for="(dataValue, dataKey) in datas" @mouseup="clickRow(dataKey)" :class="{row: true, active: activeRow === dataKey}">
+						<div v-for="(value, key) in columns" class="column ellipsis" onmouseover="Modal_OnMouseOver(this)" onmouseout="Modal_OnMouseOut(this)" :style="{width: value.Size + '%'}" v-html="dataValue.Text[key]"></div>
+					</div>
+					<div id="testLength" style="visibility: hidden;">{{ lengthTest }}</div>
+				</div>
+			</div>
+			<div class="body enter-text" v-if="type === 2">
+				<div class="desc">{{ description }}</div>
+				<div class="input-div"><input type="text" class="input" v-model="enteredText"></div>
+			</div>
+			<div class="body enter-text" v-if="type === 3">
+				<div class="desc">{{ description }}</div>
+			</div>
+			<div class="footer">
+				<div v-if="buttons.length > 1" @click="firstButton" class="button-half color-blue">{{ buttons[0] }}</div>
+				<div v-if="buttons.length > 1" @click="secondButton" class="button-half color-red">{{ buttons[1] }}</div>
+				<div v-if="buttons.length == 1" @click="secondButton" class="button-full color-red">{{ buttons[0] }}</div>
+			</div>
+		</div>
+		<!-- AnimInfo -->
+		<div id="lsvrp_animinfo" class="lsvrp-anim" v-show="show" style="display: none;">Aby wyłączyć animację naciśnij przycisk SPACJA</div>
+		<!-- Login Box -->
+		<div id="lsvrp_login" class="lsvrp-login" v-show="show" style="display: none;">
+			<div class="header">LSVRP :: Logowanie</div>
+			<div class="body">
+				<div class="body-content">
+					<label>Nazwa użytkownika</label>
+					<input type="text" v-model="username" @keyup.enter="onLogin" autofocus>
+					<div class="empty-space"></div>
+					<label>Hasło</label>
+					<input type="password" v-model="password" @keyup.enter="onLogin">
+					<div class="empty-space"></div>
+					<label class="checkbox-label">Zapamiętaj hasło
+					<input type="checkbox" v-model="rememberMe">
+					<span class="checkmark"></span>
+				</label>
+					<div class="empty-space"></div>
+					<div class="empty-space"></div>
+					<div :class="{login: true, disabled: blocked}" @click="onLogin">{{ buttonText}}</div>
+					<div class="empty-space"></div>
+					<div class="info">
+						Nie posiadasz konta? Utwórz je już teraz na naszym forum, które znajduje się pod adresem <strong>lsvrp.pl</strong>!
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Dashboard -->
+		<div id="lsvrp_dashboard" class="lsvrp-dashboard" v-show="show" style="display: none;">
+			<div class="header">
+				<div class="text">LSVRP :: Dashboard</div>
+			</div>
+			<div class="grey-line"></div>
+
+			<div class="left-panel">
+				<div class="black">
+					<div class="user">
+						<div class="avatar">
+							<img src="images/64x64.png" />
+						</div>
+						<div class="name">
+							Witaj, <strong>{{ username }}</strong>!<br />
+							<small>Ostatnio w grze: --</small>
+						</div>
+					</div>
+					<div class="blank-space"></div>
+					<div class="header-row">Wybierz postać:</div>
+					<div class="grey-line u-bold"></div>
+					<div class="char-content">
+						<div v-for="(char, key) in chars" :class="{'char-row': true, 'active': selectedChar === key}" @click="selectedChar = key">
+							{{ char.Name }} <span class="online">{{ char.Online}}</span>
+						</div>
+					</div>
+					<div class="header-row">Znajomi online:</div>
+					<div class="grey-line u-bold"></div>
+				</div>
+				<div class="login-button" @click="onEnterClicked">{{ buttonText }}</div>
+			</div>
+			<div class="right-panel">
+				<div class="overflow">
+					<div class="content">
+						<div v-if="changelogs === null" class="changelog" style="text-align: center;">
+							Ładowanie wiadomości...
+						</div>
+						<div v-if="changelogs !== null">
+							<div v-for="changelog in changelogs" class="changelog">
+								<div class="user">
+									<div class="avatar">
+										<img v-if="changelog.Gravatar === null" src="images/64x64.png" />
+										<img v-if="changelog.Gravatar !== null" :src="changelog.Gravatar" />
+									</div>
+									<div class="name">
+										{{ changelog.Title }}<br />
+										<small>Dodano {{ changelog.Date }} przez {{ changelog.AdminName }}</small>
+									</div>
+								</div>
+								<div class="blank-space"></div>
+								<div class="desc" v-html="changelog.Message"></div><br />
+								<div class="grey-line bold"></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- Tattoos Box -->
+		<div id="lsvrp_tattoos" class="lsvrp-tattoos drag" style="display: none;" v-show="show">
+			<div class="header">LSVRP :: Salon tatuażu</div>
+			<div class="body">
+				<div v-for="(tattoo, key) in tattoos" :class="{row: true, choosed: choosedTattoo === tattoo.id}" @click="rowClick(tattoo.id)">
+					<div class="text">{{ tattoo.name }} [${{ tattoo.price }}]</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="button blue">Zakup tatuażu</div>
+				<div class="button red">Anuluj</div>
+			</div>
+		</div>
+		<!-- Equipment Box -->
+		<div id="lsvrp_eq" :class="{'lsvrp-eq': true, open: show}" v-show="showSec" style="display: none;">
+			<div class="header">
+				LISTA PRZEDMIOTÓW
+				<div class="page">Strona {{ page }}</div>
+			</div>
+			<div class="body">
+				<div class="head">
+					<div class="row" style="width: 10%">Lp</div>
+					<div class="row" style="width: 65%">Nazwa</div>
+					<div class="row right" style="width: 22%">UID</div>
+				</div>
+
+				<div class="items">
+					<div v-for="n in itemNumbers" v-if="checkItemSlot(n)" :class="{row: true, used: getItemData(n).Used, checked: choosedItem === n}">
+						<div class="column lp" style="width: 10%">{{ n }}.</div>
+						<div class="column" style="width: 65%;">{{ getItemData(n).Name }}</div>
+						<div class="column right uid" style="width: 22%;">{{ getItemData(n).Id }}</div>
+					</div>
+				</div>
+				<br />
+				<div class="legend">
+					<div v-show="choosedItem !== null && !loading">
+						<kbd class="light">1</kbd> użyj
+						<kbd class="light">2</kbd> info
+						<kbd class="light">3</kbd> odłóż
+						<kbd class="light">4</kbd> powrót
+					</div>
+					<div v-show="choosedItem === null && !loading">
+						<kbd class="light">1</kbd> - <kbd class="light">6</kbd> wybór przedmiotu
+						<kbd class="light">7</kbd> - <kbd class="light">8</kbd> wybór strony
+					</div>
+					<div v-show="loading">
+						Ładowanie...
+					</div>
+					<br />
+				</div>
+			</div>
+		</div>
+		<!-- Penalty Box -->
+		<div id="lsvrp_penalty" :class="{'lsvrp-penalty': true, 'transition': true, 'open': show}" style="display: none;" v-show="showSec">
+			<div class="type">{{ penaltyType }}</div>
+			<div class="row no-overflow">Gracz: {{ penaltyPlayer }}</div>
+			<div class="row no-overflow">Administrator: {{ penaltyAdmin }}</div>
+			<div class="row padding reason">
+				<div class="hidden">{{ penaltyReason }}</div>
+			</div>
+		</div>
+		<!-- Character Creator -->
+		<div id="lsvrp_charcreator" class="lsvrp-charcreator drag" style="display: none;" v-show="show">
+			<div class="header">LSVRP :: Kreator postaci</div>
+			<div class="body">
+				<div v-for="(row, rowKey) in rows" :class="{row: true, active: rowKey === activerow}">
+					<div class="text left">{{ row.Text }}{{ colorChoose && rowKey === activerow ? " (Kolor)" : "" }}</div>
+					<div class="text right" v-if="row.Type === 1">◀&nbsp;&nbsp;{{ colorChoose && rowKey === activerow ? row.Color : row.Datas[row.Active].Data }}&nbsp;&nbsp;▶</div>
+					<div class="text right" v-if="row.Type === 2">Wybór niestandardowy [{{ ProgressToValue(row) }}]</div>
+					<div class="text right" v-if="row.Type === 3">◀&nbsp;&nbsp;{{ colorChoose && rowKey === activerow ? row.Color : row.Datas[sex][row.Active].Data }}&nbsp;&nbsp;▶</div>
+					<div class="text right" v-if="row.Type === 5">◀&nbsp;&nbsp;{{ colorChoose && rowKey === activerow ? row.Color : row.Active }}&nbsp;&nbsp;▶</div>
+                    <div class="text right" v-if="row.Type === 6">◀&nbsp;&nbsp;{{ colorChoose && rowKey === activerow ? row.Datas[sex][row.Active].Textures[row.Color] : row.Datas[sex][row.Active].Data }}&nbsp;&nbsp;▶</div>
+				</div>
+			</div>
+			<div class="color-text" v-show="rows[activerow].Color !== false">Naciśnij <span class="enter">ENTER</span>, aby ustawić kolor komponentu</div>
+			<div class="grid" v-show="grid.show">
+				<div class="img">
+					<div class="point"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Factions online in right bottom corner -->
+		<div id="factions-online" class="factions-online">
+			<div class="text">
+				<div v-if="this.factions & 1" class="blue">&nbsp;&nbsp;&nbsp;lspd</div>
+				<div v-if="this.factions & 2" class="red">&nbsp;&nbsp;&nbsp;lsfd</div>
+			</div>
+		</div>
+		<!-- Progress Box -->
+		<div id="progress-box" class="progress-box">
+			<div class="header">{{ headerName }}</div>
+			<div class="body">
+				<div class="space"></div>
+				<div class="pbox">
+					<div class="progress" :style="{width: percentage + '%'}"></div>
+				</div>
+				<div class="info">{{ percentage }}%</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/interact.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/lsvrp.js"></script>
+
+	<!-- vue.js -->
+	<script src="js/lsvrp-modal.js"></script>
+	<script src="js/lsvrp-anim.js"></script>
+	<script src="js/lsvrp-login.js"></script>
+	<script src="js/lsvrp-dashboard.js"></script>
+	<script src="js/lsvrp-tattoos.js"></script>
+	<script src="js/lsvrp-eq.js"></script>
+	<script src="js/lsvrp-penalty.js"></script>
+	<script src="js/lsvrp-charcreator-data.js"></script>
+	<script src="js/lsvrp-charcreator.js"></script>
+	<script src="js/lsvrp-factions-online.js"></script>
+	<script src="js/lsvrp-progress.js"></script>
+</body>
+
+</html>

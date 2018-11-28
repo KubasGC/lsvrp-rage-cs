@@ -1,0 +1,108 @@
+#modal-panel {
+    width: 450px;
+    display: none;
+}
+
+.modal-box-content .modal-table-row {
+    height: 35px;
+    line-height: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: Quicksand, sans-serif;
+    font-size: 13px;
+    white-space: nowrap;
+    border-top: 1px dotted darkgrey;
+}
+
+.modal-box-content .modal-table-row.no-border {
+    border-top: none !important;
+}
+
+.modal-box-content .modal-table-row.border-bottom {
+    border-bottom: 1px dotted darkgrey;
+}
+
+
+.modal-table-row .first {
+    display: inline-block;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    color: rgba(157, 157, 157, 0.75);
+}
+
+.modal-table-row .second {
+    display: inline-block;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.modal-box-content .modal-buttons {
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.modal-box-content .modal-page {
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+.modal-page .page-info {
+    text-align: center;
+    font-family: Quicksand, sans-serif;
+    font-size: 13px;
+    color: rgba(125, 125, 125, 0.78);
+}
+
+
+.modal-box-content .modal-button {
+    display: inline-block;
+    font-family: Quicksand, sans-serif;
+    background-color: rgb(80, 84, 87);
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.modal-box-content .modal-button:hover {
+    background-color: rgb(67, 72, 76) !important;
+}
+
+.modal-adminlist-none {
+    font-weight: bold;
+    color: #3C3C3C;
+}
+
+.modal-adminlist-administrator {
+    font-weight: bold;
+    color: #FF0000;
+}
+
+.modal-adminlist-gamemaster {
+    font-weight: bold;
+    color: #18C91F;
+}
+
+.modal-adminlist-support {
+    font-weight: bold;
+    color: #0085DD;
+}
+
+.modal-adminlist-helper {
+    font-weight: bold;
+    color: #A0489E;
+}
+
+.modal-adminlist-developer {
+    font-weight: bold;
+    color: #FF7C52;
+}

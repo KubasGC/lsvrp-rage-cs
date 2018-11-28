@@ -1,0 +1,55 @@
+.lsvrp-penalty {
+	position: relative;
+	width: 300px;
+	height: 105px;
+	margin-left: 5px;
+	left: -300px;
+	opacity: 0;
+
+	&.open {
+		left: 0 !important;
+		opacity: 1 !important;
+	}
+
+	&.transition {
+		transition: left 1s ease, opacity 1s ease;
+	}
+	background: rgba(16, 16, 16, 0.5);
+	border-left: 5px solid rgba(9, 93, 138, 0.5);
+
+	.type {
+		font-family: "Myriad Pro Light", serif;
+		padding: 5px 5px 3px;
+		color: #ffffff;
+		font-size: 16px;
+	}
+
+	.row {
+		font-family: "Source Sans", serif;
+		color: rgba(220, 220, 220, 0.7);
+		font-size: 14px;
+		padding-left: 5px;
+		width: 100%;
+
+		&.no-overflow {
+			overflow: hidden;
+		}
+
+		&.padding {
+			padding-left: 5px;
+			padding-right: 5px;
+
+			.hidden {
+				overflow: hidden;
+				overflow-wrap: break-word;
+				text-overflow: ellipsis;
+				margin-right: 10px;
+			}
+		}
+
+		&.reason {
+			color: rgba(255, 255, 255, 0.9);
+			height: 35px;
+		}
+	}
+}

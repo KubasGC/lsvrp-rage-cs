@@ -1,0 +1,89 @@
+.lsvrp-eq {
+	&.open {
+		opacity: 1 !important;
+	}
+	transition: left 1s ease, opacity 1s ease;
+	opacity: 0;
+	width: 450px;
+	max-height: 230px;
+	background: rgba(16, 16, 16, 0.6);
+
+	.header {
+		font-family: "Myriad Pro Light", serif;
+		color: #b7b7b7;
+		text-align: center;
+		padding: 10px;
+
+		.page {
+			font-size: 14px;
+		}
+	}
+
+	.body {
+		.head {
+			padding-left: 5px;
+
+			.row {
+				float: left;
+				display: inline-block;
+				font-family: "Source Sans", serif;
+				color: #949692;
+				font-size: 12px;
+
+				&.right {
+					text-align: right;
+				}
+			}
+		}
+
+		.items {
+			height: 120px;
+
+			.row {
+				padding-left: 5px;
+				font-size: 16px;
+				height: 20px;
+				line-height: 20px;
+				color: #ffffff;
+
+				.column {
+					float: left;
+					display: inline-block;
+					font-family: "Source Sans", serif;
+					overflow: hidden;
+
+					&.right {
+						text-align: right;
+					}
+
+					&.uid {
+						color: #C3C3BD;
+						font-size: 13px;
+					}
+
+					&.lp {
+						color: #ffffff;
+					}
+				}
+
+				&.used {
+					color: #d5c68f !important;
+				}
+
+				&.checked {
+					color: #00e4ff !important;
+					transition: color 0.2s;
+					font-family: "Source Sans Bold", serif;
+				}
+			}
+		}
+
+		.legend {
+			font-family: "Source Sans", serif;
+			font-size: 12px;
+			padding-left: 10px;
+			padding-top: 10px;
+			color: #fff;
+		}
+	}
+}

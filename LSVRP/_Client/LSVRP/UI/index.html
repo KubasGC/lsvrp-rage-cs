@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LSVRP UI</title>
+
+    <link rel="stylesheet" href="css/lsvrp-tune-menu.css">
+    <link rel="stylesheet" href="css/lsvrp-char-creator.css">
+    <link rel="stylesheet" href="css/lsvrp.css">
+    <link rel="stylesheet" href="css/lsvrp-items.css">
+    <link rel="stylesheet" href="css/lsvrp-offers.css">
+    <link rel="stylesheet" href="css/lsvrp-modal.css">
+    <link rel="stylesheet" href="css/spinner.css">
+    <link rel="stylesheet" href="css/keys.css">
+    <link rel="stylesheet" href="css/lsvrp-bw.css">
+    <link rel="stylesheet" href="css/lsvrp-modal-list.css">
+    <link rel="stylesheet" href="css/lsvrp-car.css">
+    <link rel="stylesheet" href="css/lsvrp-gaspump.css">
+    <link rel="stylesheet" href="css/lsvrp-vehicle.css">
+    <link rel="stylesheet" href="css/lsvrp-tune.css">
+    <link rel="stylesheet" href="css/lsvrp-cash.css">
+    <link rel="stylesheet" href="css/lsvrp-duty.css">
+    <link rel="stylesheet" href="css/lsvrp-playerslist.css">
+    <link rel="stylesheet" href="css/lsvrp-fastchoice.css">
+    <link rel="stylesheet" href="css/lsvrp-penalties.css">
+    <link rel="stylesheet" href="css/lsvrp-newsbar.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/lsvrp-phone.css">
+    <link rel="stylesheet" href="css/nouislider.min.css">
+    <link rel="stylesheet" href="css/lsvrp-vehpaint.css">
+    <link rel="stylesheet" href="css/lsvrp-help.css">
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/draggabilly.pkgd.min.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/lsvrp.js"></script>
+    <script src="js/lsvrp-items.js"></script>
+    <script src="js/lsvrp-offers.js"></script>
+    <script src="js/lsvrp-modal.js"></script>
+    <script src="js/lsvrp-bw.js"></script>
+    <script src="js/lsvrp-modal-list.js"></script>
+    <script src="js/lsvrp-zones.js"></script>
+    <script src="js/lsvrp-char-creator.js"></script>
+    <script src="js/lsvrp-tune-menu.js"></script>
+    <script src="js/lsvrp-gaspump.js"></script>
+    <script src="js/lsvrp-vehicle.js"></script>
+    <script src="js/lsvrp-cash.js"></script>
+    <script src="js/lsvrp-duty.js"></script>
+    <script src="js/lsvrp-fastchoice.js"></script>
+    <script src="js/lsvrp-playerslist.js"></script>
+    <script src="js/lsvrp-penalties.js"></script>
+    <script src="js/lsvrp-phone.js"></script>
+    <script src="js/lsvrp-newsbar.js"></script>
+    <script src="js/lsvrp-vehpaint.js"></script>
+    <script src="js/lsvrp-help.js"></script>
+    <script src="js/iopctrl.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="cursor-info">Naciśnij <kbd class="light">F3</kbd> aby włączyć lub wyłaczyć kursor</div>
+        <div id="loading-container">
+            <div class="sk-cube-grid">
+                <div class="sk-cube sk-cube1"></div>
+                <div class="sk-cube sk-cube2"></div>
+                <div class="sk-cube sk-cube3"></div>
+                <div class="sk-cube sk-cube4"></div>
+                <div class="sk-cube sk-cube5"></div>
+                <div class="sk-cube sk-cube6"></div>
+                <div class="sk-cube sk-cube7"></div>
+                <div class="sk-cube sk-cube8"></div>
+                <div class="sk-cube sk-cube9"></div>
+            </div>
+            <div style="text-align: center; color: white; margin-top: 12px;" class="font-quicksand">
+                Wczytywanie...
+            </div>
+        </div>
+        <div class="right-sidebar"><img class="lsvrp-placeholder" src="img/logo.png" /></div>
+        <!-- <div class="right-bottom-sidebar font-quicksand" id="zoneId">Strefa #x</div> -->
+        <div id="bw-timer">
+            <div class="header">Czas BW</div>
+            <div class="time">00:00</div>
+        </div>
+        <div id="playerCash" class="cash">
+            $0
+        </div>
+        <div id="playerDuty" class="duty">
+            SŁUŻBA NIE DRUŻBA<br>
+        </div>
+        <div id="newsbar" class="newsbar">
+            <div class="highlight" id="newsbar-highlight" onClick="showRadio();">&nbsp;</div>
+            <div class="titlebar">
+                <p class="title" id="ns-title">MUZYKA</p>
+                <p class="author" id="ns-author">Playlista</p>
+            </div>
+            <div class="content" id="ns-content">
+                W radiu leci standardowy blok muzyczny.
+            </div>
+        </div>
+        <div id="fastChoice" class="fastChoice-window">
+            <div class="fastChoice-header">Szybki wybór</div>
+            <div class="modal-box-content">
+                <div class="modal-box-padding">
+                    <div class="modal-buttons">
+                        <button class="modal-button" style="width:100px;" onclick="showVehicles();">Pojazdy</button>
+                        <button class="modal-button" style="width:100px;" onclick="showGroups();">Grupy</button>
+                        <button class="modal-button" style="width:100px;" onclick="showPhoneFC();">Telefon</button>
+                        <button class="modal-button" style="width:100px;" onclick="showStats();">Statystyki</button>
+                        <button class="modal-button margtop" style="width:100px;" onclick="showClothes();">Ubrania</button>
+                        <button class="modal-button margtop" style="width:100px;" onclick="showDescriptions();">Opisy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="penalties" class="penalties">
+            <font class="penalties-title" id="penalties-title"></font><br>
+            <font class="penalties-player">Gracz:&#8195;</font>
+            <font class="penalties-player" id="penalties-player"></font><br>
+            <font class="penalties-admin">Od:&#8195;&#8195;&nbsp;</font>
+            <font class="penalties-admin" id="penalties-admin"></font><br>
+            <font class="penalties-reason" id="penalties-reason"></font>
+        </div>
+        <div id="scoretab" class="scoretab">
+            <div class="left">
+                <img src="./img/logo.png" style="width:100px;" />
+            </div>
+            <div class="right">
+                <b class="text" id="playersCount">Gracze online: x </b>
+            </div>
+            <table cellspacing="0px">
+                <tr style="background-color: grey;">
+                    <th width="50px;">Id</th>
+                    <th width="300px;">Nick</th>
+                    <th width="300px;">vPoints</th>
+                </tr>
+            </table>
+            <div class="tablediv">
+                <table cellspacing="0px">
+                    <!-- LISTA -->
+                    <tbody id="pTbody">
+
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+        <div id="items-panel" class="modal-box draggable">
+            <div class="modal-box-header">
+                Lista Twoich przedmiotów
+                <div class="loading">
+                    <div class="cssload-loader">
+                        <div class="cssload-side"></div>
+                        <div class="cssload-side"></div>
+                        <div class="cssload-side"></div>
+                        <div class="cssload-side"></div>
+                        <div class="cssload-side"></div>
+                        <div class="cssload-side"></div>
+                        <div class="cssload-side"></div>
+                        <div class="cssload-side"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-box-content">
+                <div class="items-table-header items-table-page" style="text-align: center;">strona NaN z NaN</div>
+                <div class="items-table-header">
+                    <div class="column">Nazwa (UID)</div>
+                    <div class="column">Informacje</div>
+                </div>
+                <div class="items-table-content">
+                    <!-- CONTENT -->
+
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-button" onclick="Items_LowerPage();">&laquo; poprzednia strona</button>
+                    <button class="modal-button" onclick="Items_UpperPage();">następna strona &raquo;</button>
+                </div>
+                <div class="items-table-header" style="text-align: center;">Przedmioty w pobliżu</div>
+                <div class="items-table-header items-proximity-page" style="text-align: center;">strona NaN z NaN</div>
+                <div class="items-proximity">
+                    <div class="items-proximity-not-found">
+                        Nie znaleziono żadnych przedmiotów w pobliżu.
+                    </div>
+                    <div class="items-proximity-content">
+
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button class="modal-button" onclick="Items_ProxLowerPage();">&laquo; poprzednia strona</button>
+                        <button class="modal-button" onclick="Items_ProxUpperPage();">następna strona &raquo;</button>
+                    </div>
+                </div>
+                <div class="items-submenu">
+                    <div class="info">Dostępne akcje</div>
+                    <div class="items-submenu-list">
+                        <div class="items-submenu-row" onclick="UseSubMenu('use')">Użyj</div>
+                        <div class="items-submenu-row" onclick="UseSubMenu('drop')">Odłóż na ziemię</div>
+                        <div class="items-submenu-row" onclick="UseSubMenu('offer')">Oferuj</div>
+                        <div class="items-submenu-row" onclick="UseSubMenu('info')">Informacja</div>
+                        <div class="items-submenu-row" onclick="UseSubMenu('close')">Zamknij</div>
+                    </div>
+                </div>
+                <div class="items-proximity-submenu">
+                    <div class="info">Dostępne akcje</div>
+                    <div class="items-submenu-list">
+                        <div class="items-submenu-row" onclick="Items_UseProxSubmenu('pick')">Podnieś</div>
+                        <div class="items-submenu-row" onclick="Items_UseProxSubmenu('close')">Zamknij</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gaspump" class="gaspump">
+            <center><img src="img/ron.png" style="width:65%; margin-top: 10px;" /></center>
+            <br><br><br>
+            <label for="cash" class="pump-label"><b>Do zapłaty</b></label><br>
+            <center><input type="text" value="0.00" class="pump-bar" id="cash" /></center>
+            <br>
+            <label for="cash" class="pump-label"><b>Litry</b></label><br>
+            <center><input type="text" value="0.00" class="pump-bar" id="fuel" /></center>
+            <br><br>
+            <center>
+                <button class="pump-fuelbutton" onmousedown="pump_down()" onmouseup="pump_up()" id="pDown">Tankuj</button>
+            </center>
+            <br>
+            <center>
+                <button class="pump-cancelbutton" onclick="pump_cancel()">Anuluj</button>
+                <button class="pump-paybutton" onclick="pump_pay()">Zapłać</button>
+            </center>
+        </div>
+        <div id="speedometer">
+            <span id="speedometer"></span>
+            <span id="fuel"></span>
+        </div>
+        <div id="offers-panel" class="modal-box draggable">
+            <div class="modal-box-header">Przychodząca oferta</div>
+            <div class="modal-box-content">
+                <div class="modal-box-padding">
+                    <div class="offers-title">
+                        <!-- TYTUŁ -->
+                    </div>
+                    <div class="offers-price">
+                        <!-- CENA -->
+                    </div>
+                    <div class="offers-info">Wybierz jedną z metod płatności, lub anuluj ofertę</div>
+                    <div class="offers-buttons">
+                        <button class="offers-button close" type="button" onclick="DiscardOffer()">X</button>
+                        <button class="offers-button" type="button" onclick="AcceptOfferCard()">Zapłać kartą</button>
+                        <button class="offers-button" type="button" onclick="AcceptOfferCash()">Zapłać gotówką</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-panel" class="modal-box draggable">
+            <div class="modal-box-header modal-header">Statystyki gracza Jeremy Simons</div>
+            <div class="modal-box-content">
+                <div class="items-table-header modal-table-page" style="text-align: center;">strona 1 z 1</div>
+                <div class="items-table-header">
+                    <div class="column">Nazwa</div>
+                    <div class="column">Wartość</div>
+                </div>
+                <div class="modal-table-content">
+                    <div class="modal-table-row no-border"></div>
+                    <div class="modal-table-row"></div>
+                    <div class="modal-table-row"></div>
+                    <div class="modal-table-row"></div>
+                    <div class="modal-table-row border-bottom"></div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-button" onclick="ModalLowerPage();">&laquo; poprzednia strona</button>
+                    <button class="modal-button" onclick="ModalHide();mp.trigger('cef.global.hideCursor');mp.trigger('client.dialog.togglechat', false);">
+                        Zamknij
+                    </button>
+                    <button class="modal-button" onclick="ModalUpperPage();">następna strona &raquo;</button>
+                </div>
+            </div>
+        </div>
+        <div id="modal-list-panel" class="modal-box draggable">
+            <div class="modal-box-header"></div>
+            <div class="modal-box-content">
+                <div class="items-table-header" style="text-align: center;"></div>
+                <div class="modal-list-items" style="display: none;">
+
+                </div>
+                <div class="modal-list-text" style="display: none;">
+                    <input type="text" id="modal-list-text-area">
+                    <div class="modal-buttons">
+                        <button class="modal-button" onclick="modalListSendText();mp.trigger('client.dialog.togglechat', false);">Akceptuj
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-button" onclick="modalListToggle(false);mp.trigger('cef.global.hideCursor');mp.trigger('client.dialog.togglechat', false);">
+                        Zamknij
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+        <div id="char-creator" class="charCreatorMain">
+            <br>
+            <img src="img/kp.png" style="width: 100%" class="creatorImg" />
+            <br>
+            <div class="modal-box-content font-quicksand">
+                <div class="">
+                    <div style="text-align: justify;" class="charPadding">
+                        Witaj w kreatorze postaci! Dzięki niemu możesz utworzyć
+                        swoją unikalną postać, dostosowując w pełni jej wygląd.
+                        Pamiętaj, że utworzenie postaci to czynność <strong>jednorazowa</strong>
+                        i nie będzie ona możliwa ponownie, koniecznie przemyśl więc swoją decyzję.
+                    </div>
+                    <br />
+                    <div class="row charPadding" style="background-color: white; color: black;" id="cc0">
+                        Ojciec: <strong id="char-creator-father-name">James (0)</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeMenSkin(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeMenSkin(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="cc1">
+                        Matka: <strong id="char-creator-mother-name">Emma (21)</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeWomenSkin(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeWomenSkin(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="cc2">
+                        Mieszanka skinów <strong id="char-creator-skin-mix-text">0.5</strong>
+                        <div class="right" id="char-creator-skin-mix" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="row charPadding" id="cc3">
+                        Mieszanka kolorów skóry <strong id="char-creator-skin-mix-color-text">0.5</strong>
+                        <div class="right" id="char-creator-skin-color-mix" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="row charPadding" id="cc4">
+                        Fryzura: <strong id="char-creator-hair-name">Łysina</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeHair(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeHair(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="cc5">
+                        Kolor fryzury: <strong id="char-creator-haircolor-name">Czarny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeHairColor(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeHairColor(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="cc6">
+                        Znaki szczególne: <strong id="char-creator-blemishes-name">Brak</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeBlemishes(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeBlemishes(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="cc7">
+                        Zarost: <strong id="char-creator-facialhair-name">Brak</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeFacialHair(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeFacialHair(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="cc8">
+                        Kolor zarostu: <strong id="char-creator-facialhaircolor-name">Brak</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeFacialHairColor(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeFacialHairColor(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="cc9">
+                        Brwi: <strong id="char-creator-eyebrows-name">Brak</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeEyeBrows(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" style="font-size: 21px;" onclick="changeEyeBrows(true);"></i>
+                        </div>
+                    </div>
+
+                    <div class="row charPadding" id="cc10">
+                        Szerokość nosa <strong id="char-creator-nose-width-text">0.0</strong>
+                        <div class="right" id="char-creator-nose-width" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="row charPadding" id="cc11">
+                        Wysokość nosa <strong id="char-creator-nose-height-text">0.0</strong>
+                        <div class="right" id="char-creator-nose-height" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="row charPadding" id="cc12">
+                        Długość nosa <strong id="char-creator-nose-length-text">0.0</strong>
+                        <div class="right" id="char-creator-nose-length" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="row charPadding" id="cc13">
+                        Mostek nosa <strong id="char-creator-nose-bridge-text">0.0</strong>
+                        <div class="right" id="char-creator-nose-bridge" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="row charPadding" id="cc14">
+                        Czubek nosa <strong id="char-creator-nose-tip-text">0.0</strong>
+                        <div class="right" id="char-creator-nose-tip" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="row charPadding" id="cc15">
+                        Zmiana mostka nosa <strong id="char-creator-nose-bridgeshift-text">0.0</strong>
+                        <div class="right" id="char-creator-nose-bridgeshift" style="width: 30%; margin-right: 20px;"></div>
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="modal-button" onclick="SaveSkin();">Zapisz postać</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="char-clothes" class="charCreatorMain">
+            <br>
+            <img src="img/kp.png" style="width: 100%" class="creatorImg" />
+            <br>
+            <div class="modal-box-content font-quicksand">
+                <div class="">
+                    <div style="text-align: justify;" class="charPadding">
+                        Możesz tutaj utworzyć swój własny strój, który później
+                        będzie mógł być używany w trakcie gry.
+                    </div>
+                    <br />
+                    <div class="row charPadding">
+                        <strong>Kamera</strong>
+                        <div class="right">
+                            <button onclick="mp.trigger('ChangePlayerAngle');" style='font-size: 12px;' class='charBtnCam'>
+                                Zmień kamerę
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row charPadding" style="background-color: white; color: black;" id="clc0">
+                        Tors: <strong id="char-clothes-torso-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(1, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(1, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc1">
+                        Spodnie: <strong id="char-clothes-legs-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(2, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(2, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc2">
+                        Wariant spodni: <strong id="char-clothes-legst-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(3, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(3, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc3">
+                        Bag: <strong id="char-clothes-bag-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(4, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(4, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc4">
+                        Bag texture: <strong id="char-clothes-bagt-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(5, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(5, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc5">
+                        Buty: <strong id="char-clothes-boots-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(6, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(6, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc6">
+                        Wariant butów: <strong id="char-clothes-bootst-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(7, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(7, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc7">
+                        Akcesoria: <strong id="char-clothes-accessories-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(8, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(8, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc8">
+                        Wariant akcesoriów: <strong id="char-clothes-accessoriest-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(9, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(9, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc9">
+                        Podkoszulek: <strong id="char-clothes-undershirt-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(10, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(10, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc10">
+                        Wariant podkoszulka: <strong id="char-clothes-undershirtt-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(11, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(11, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc11">
+                        Top: <strong id="char-clothes-tops-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(12, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(12, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc12">
+                        Wariant topu: <strong id="char-clothes-topst-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(13, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(13, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc13">
+                        Okulary: <strong id="char-clothes-glasses-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(14, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(14, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc14">
+                        Wariant okularów: <strong id="char-clothes-glassest-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(15, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(15, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc15">
+                        Czapki: <strong id="char-clothes-hats-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(16, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(16, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc16">
+                        Wariant czapki: <strong id="char-clothes-hatst-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(17, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(17, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc17">
+                        Dodatki do uszu: <strong id="char-clothes-ears-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(18, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(18, true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="clc18">
+                        Wariant dodatków: <strong id="char-clothes-earst-name">Typ 1</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="ChooseCreator(19, false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="ChooseCreator(19, true);"></i></div>
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="modal-button" onclick="SaveClothes();">Zapisz ubranie</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- LAKIEROWANIE -->
+        <div id="veh-paint" style="position:absolute;" class="charCreatorMain">
+            <br>
+            <img src="img/lakierowanie.png" style="width: 100%" />
+            <br><br><br>
+            <div class="modal-box-content font-quicksand">
+                <div class="">
+                    <div style="text-align: justify;" class="charPadding">
+                        Witaj na ekranie wyboru koloru pojazdu. Użyj strzałek góra/dół i lewo/prawo aby poruszać się po
+                        menu. Wybierz kolory wozu i zatwierdź przyciskiem na dole.
+                    </div>
+                    <br />
+                    <div class="row charPadding" style="background-color: white; color: black;" id="vp0">
+                        Kolor 1: <strong id="veh-paint-c1">Metallic black</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changePaintOneColor(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changePaintOneColor(true);"></i></div>
+                    </div>
+                    <div class="row charPadding" id="vp1">
+                        Kolor 2: <strong id="veh-paint-c2">Metallic black</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changePaintTwoColor(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changePaintTwoColor(true);"></i></div>
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="modal-button" onclick="SavePaint();">Potwierdź</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- TUNING -->
+        <div id="tune-menu" class="tune-menu">
+            <div class="container">
+                <center><img src="img/tune-logo.png" style="margin-top: 20px; opacity: 0.9;" /></center>
+                <div class="modal-box-padding">
+                    <div style="text-align: center;">
+                        WYGLĄD
+                    </div>
+                    <div class="row">
+                        Spoiler: <strong id="tune-menu-spoiler" style="color:#b5b5b5;">Fabryczny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeSpoiler(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeSpoiler(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Przedni zderzak: <strong id="tune-menu-bumper" style="color:#b5b5b5;">Fabryczny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeFBumper(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeFBumper(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Tylny zderzak: <strong id="tune-menu-bumper2" style="color:#b5b5b5;">Fabryczny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeRBumper(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeRBumper(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Progi: <strong id="tune-menu-sideskirt" style="color:#b5b5b5;">Fabryczne</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeSSkirt(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeSSkirt(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Wydech: <strong id="tune-menu-exhaust" style="color:#b5b5b5;">Fabryczny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeExhaust(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeExhaust(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Klatka: <strong id="tune-menu-frame" style="color:#b5b5b5;">Fabryczna</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeFrame(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeFrame(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Grill: <strong id="tune-menu-grill" style="color:#b5b5b5;">Fabryczny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeGrille(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeGrille(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Nadkola: <strong id="tune-menu-fender" style="color:#b5b5b5;">Fabryczne</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeFender(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeFender(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Maska: <strong id="tune-menu-hood" style="color:#b5b5b5;">Fabryczna</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeHood(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeHood(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Dach: <strong id="tune-menu-roof" style="color:#b5b5b5;">Fabryczny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeRoof(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeRoof(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Ksenony: <strong id="tune-menu-xenon" style="color:#b5b5b5;">Nie</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeXenon(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeXenon(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Felgi: <strong id="tune-menu-wheels" style="color:#b5b5b5;">Fabryczne</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeWheels(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeWheels(true);"></i></div>
+                    </div>
+                    <br>
+                    <div style="text-align: center;">
+                        DODATKI
+                    </div>
+                    <br>
+                    <center>
+                        <input id="extra-1" name="extra-1" type="checkbox"><label for="extra-1" style="position: fixed;margin-top: -20px;margin-left: -16px;">1</label>
+                        <input id="extra-2" name="extra-2" type="checkbox"><label for="extra-2" style="position: fixed;margin-top: -20px;margin-left: -16px;">2</label>
+                        <input id="extra-3" name="extra-3" type="checkbox"><label for="extra-3" style="position: fixed;margin-top: -20px;margin-left: -16px;">3</label>
+                        <input id="extra-4" name="extra-4" type="checkbox"><label for="extra-4" style="position: fixed;margin-top: -20px;margin-left: -16px;">4</label>
+                        <input id="extra-5" name="extra-5" type="checkbox"><label for="extra-5" style="position: fixed;margin-top: -20px;margin-left: -16px;">5</label>
+                        <input id="extra-6" name="extra-6" type="checkbox"><label for="extra-6" style="position: fixed;margin-top: -20px;margin-left: -16px;">6</label>
+                        <input id="extra-7" name="extra-7" type="checkbox"><label for="extra-7" style="position: fixed;margin-top: -20px;margin-left: -16px;">7</label>
+                        <input id="extra-8" name="extra-8" type="checkbox"><label for="extra-8" style="position: fixed;margin-top: -20px;margin-left: -16px;">8</label>
+                        <input id="extra-9" name="extra-9" type="checkbox"><label for="extra-9" style="position: fixed;margin-top: -20px;margin-left: -16px;">9</label>
+                        <br><br>
+                        <input id="extra-10" name="extra-10" type="checkbox"><label for="extra-10" style="position: fixed;margin-top: -20px;margin-left: -24px;">10</label>&nbsp;
+                        <input id="extra-11" name="extra-11" type="checkbox"><label for="extra-11" style="position: fixed;margin-top: -20px;margin-left: -24px;">11</label>&nbsp;
+                        <input id="extra-12" name="extra-12" type="checkbox"><label for="extra-12" style="position: fixed;margin-top: -20px;margin-left: -24px;">12</label>&nbsp;
+                        <input id="extra-13" name="extra-13" type="checkbox"><label for="extra-13" style="position: fixed;margin-top: -20px;margin-left: -24px;">13</label>
+                    </center>
+                    <div style="text-align: center;">
+                        OSIĄGI
+                    </div>
+                    <div class="row">
+                        Silnik: <strong id="tune-menu-engine" style="color:#b5b5b5;">Fabryczny</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeEngine(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeEngine(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Turbo: <strong id="tune-menu-turbo" style="color:#b5b5b5;">Nie</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeTurbo(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeTurbo(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Skrzynia biegów: <strong id="tune-menu-transmission" style="color:#b5b5b5;">Fabryczna</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeTransmission(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeTransmission(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Hamulce: <strong id="tune-menu-brakes" style="color:#b5b5b5;">Fabryczne</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeBrakes(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeBrakes(true);"></i></div>
+                    </div>
+                    <div class="row">
+                        Zawieszenie: <strong id="tune-menu-suspension" style="color:#b5b5b5;">Fabryczne</strong>
+                        <div class="right"><i class="icon ion-arrow-left-b" onclick="changeSuspension(false);"></i>&nbsp;&nbsp;<i
+                                class="icon ion-arrow-right-b" onclick="changeSuspension(true);"></i></div>
+                    </div>
+                    <br>
+                    <br>
+                    <center>
+                        Cena końcowa: <br>
+                        <font color="lightgreen">$<i name="dollars">0</i></font>
+                    </center>
+                    <br>
+                    <br>
+                    <center>
+                        <button class="tune-cancel" onclick="">Anuluj</button>
+                        <button class="tune-accept" onclick="SaveTune();">Zatwierdź</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="phone-wallpaper" id="phone-wallpaper">
+        </div>
+        <div class="phone-notification-bar" id="phone-notification-bar">&#128225;Paleto GSM</div>
+        <div class="phone-app" id="phone-app">
+            <div class="phone-app-bg" id="phone-app-bg">
+
+                <!-- USTAWIENIA -->
+                <div class="phone-app-settings" id="phone-app-settings">
+                    <div class="phone-app-title"><b onClick="showHome();" style="cursor: pointer;">&nbsp;<&nbsp;</b> <b>USTAWIENIA</b>
+                    </div>
+                    <div class="phone-app-list-item" onclick="showSettingsWallpaper(true);">Tapeta</div>
+                    <div class="phone-app-list-item" onclick="showSettingsWallpaperPremium(true);">Tapeta premium</div>
+                    <div class="phone-app-content">
+
+                    </div>
+                </div>
+                <!-- USTAWIENIA TAPETA -->
+                <div class="phone-app-settings-wallpaper" id="phone-app-settings-wallpaper">
+                    <div class="phone-app-title"><b onClick="showSettingsWallpaper(false);" style="cursor: pointer;">&nbsp;<&nbsp;</b>
+                                <b>TAPETA</b>
+                    </div>
+                    <div class="phone-app-content">
+                        <img src="img/phone/wallpapers/1.png" class="phone-app-wallpaper-gallery" onclick="changeWallpaper(1);saveStandardWallpaper(1);showHome();" />
+                        <img src="img/phone/wallpapers/2.png" class="phone-app-wallpaper-gallery" onclick="changeWallpaper(2);saveStandardWallpaper(2);showHome();" />
+                        <img src="img/phone/wallpapers/3.png" class="phone-app-wallpaper-gallery" onclick="changeWallpaper(3);saveStandardWallpaper(3);showHome();" />
+                        <img src="img/phone/wallpapers/4.png" class="phone-app-wallpaper-gallery" onclick="changeWallpaper(4);saveStandardWallpaper(4);showHome();" />
+                        <img src="img/phone/wallpapers/5.png" class="phone-app-wallpaper-gallery" onclick="changeWallpaper(5);saveStandardWallpaper(5);showHome();" />
+                        <img src="https://i.pinimg.com/originals/b2/4a/6a/b24a6a196b94d28661df0c8df36d341a.jpg" class="phone-app-wallpaper-gallery"
+                            onclick="changeWallpaper(6);showHome();" />
+                    </div>
+                </div>
+                <!-- USTAWIENIA TAPETA PREMIUM -->
+                <div class="phone-app-settings-wallpaper-premium" id="phone-app-settings-wallpaper-premium">
+                    <div class="phone-app-title"><b onClick="showSettingsWallpaperPremium(false);" style="cursor: pointer;">&nbsp;<&nbsp;</b>
+                                <b>TAPETA
+                                PREMIUM</b></div>
+                    <div class="phone-app-content">
+                        Wprowadź link do tapety
+                        <textarea id="phone-app-wallpaper-premium-link" class="phone-app-wallpaper-premium-link" wrap="virtual"></textarea><br><br>
+                        <center>
+                            <div class="phone-app-wallpaper-premium-save" id="phone-app-wallpaper-premium-save" onClick="savePremiumWallpaper();">Zapisz
+                            </div>
+                        </center>
+                    </div>
+                </div>
+                <!-- TELEFON -->
+                <div class="phone-app-phone" id="phone-app-phone">
+                    <div class="phone-app-title"><b onClick="showHome();" style="cursor: pointer;">&nbsp;<&nbsp;</b> <b>TELEFON</b>
+                    </div>
+                    <input class="phone-app-phone-number-input" type="text" id="phone-app-phone-number-input" disabled="disabled"></input>
+                    <div class="phone-app-phone-buttons-row">
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('1');">1</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('2');">2</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('3');">3</div>
+                    </div>
+                    <div class="phone-app-phone-buttons-row">
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('4');">4</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('5');">5</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('6');">6</div>
+                    </div>
+                    <div class="phone-app-phone-buttons-row">
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('7');">7</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('8');">8</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('9');">9</div>
+                    </div>
+                    <div class="phone-app-phone-buttons-row">
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('*');">*</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('0');">0</div>
+                        <div class="phone-app-phone-button" onClick="phoneCallInsert('#');">#</div>
+                    </div>
+                    <img src="img/phone/phone/makecall.png" class="phone-app-phone-button-call" />
+                    <img src="img/phone/phone/backspace.png" class="phone-app-phone-button-undo" onClick="phoneCallRemove();" />
+                    <div class="phone-app-content">
+
+                    </div>
+                </div>
+                <!-- KONTAKTY -->
+                <div class="phone-app-contacts" id="phone-app-contacts">
+                    <div class="phone-app-title"><b onClick="showHome();" style="cursor: pointer;">&nbsp;<&nbsp;</b> <b>KONTAKTY</b>
+                    </div>
+                    <div style="height: 100%; overflow-y: auto;" id="phoneContactsList">
+
+                    </div>
+                    <div class="phone-app-contacts-add-button">+</div>
+                </div>
+                <!-- KONTAKTY - PODGLĄD -->
+                <div class="phone-app-contacts-show" id="phone-app-contacts-show">
+                    <div class="phone-app-title"><b onClick="showContactInfo(0);showContacts(true);" style="cursor: pointer;">&nbsp;<&nbsp;</b>
+                                <b id="contactDetailNameHeader">NAZWA KONTAKTU</b></div>
+                    <div class="phone-app-content">
+                        <div class="phone-app-contacts-show-avatar" id="contactDetailAvatar">D</div>
+                        <input type="text" class="phone-app-contacts-show-name input-phone" id="contactDetailName"
+                            value="Darek Gazownik"></input>
+                        <br><br><br>
+                        <b>Numer</b>
+                        <input type="text" class="phone-app-contacts-show-number input-phone" id="contactDetailNumber"
+                            value="123456"></input>
+                        <br><br><br>
+                        <div class="phone-app-contacts-show-button bg-blue">Zapisz</div>
+                        <div class="phone-app-contacts-show-button bg-red">Usuń</div>
+                        <div class="phone-app-contacts-show-button bg-green">Zadzwoń</div>
+                        <div class="phone-app-contacts-show-button bg-yellow">Wiadomość</div>
+                    </div>
+                </div>
+                <!-- WIADOMOŚCI -->
+                <div class="phone-app-messages" id="phone-app-messages">
+                    <div class="phone-app-title"><b onClick="showHome();" style="cursor: pointer;">&nbsp;<&nbsp;</b> <b>WIADOMOŚCI</b>
+                    </div>
+                    <div style="height: 100%; overflow-y: auto;" id="conversationsList">
+                        <!--
+                        <div class="phone-app-list-item messages-list" onclick=""><div class="phone-app-contacts-avatar">A</div><div class="phone-app-messages-name">Analfabeta</div><div class="phone-app-messages-date">17 kwietnia</div></div>
+                    -->
+                    </div>
+                </div>
+                <!-- WIADOMOŚCI PODGLĄD -->
+                <div class="phone-app-messages-show" id="phone-app-messages-show">
+                    <div class="phone-app-title"><b onClick="showAllMessages(0);" style="cursor: pointer;">&nbsp;<&nbsp;</b>
+                                <b id="messName">DAREK GAZOWNIK</b></div>
+                    <div style="height: 63%; overflow-y: auto;" id="convMessagesList">
+
+                    </div>
+                    <textarea id="phone-messages-input" class="phone-messages-input" wrap="virtual"></textarea>
+                    <div class="phone-messages-send">Wyślij</div>
+                </div>
+                <!-- -->
+
+                <!-- PRZYCHODZĄCE POŁĄCZENIE -->
+                <div class="phone-app-incomming-call" id="phone-app-incomming-call">
+                    <center>
+                        <div class="phone-app-incomming-call-avatar">D</div>
+                        <br>
+                        <div class="phone-app-incomming-call-name">Darek Gazownik</div>
+                        <div class="phone-app-incomming-call-green"><img src="img/phone/call/green.png" class="phone-app-incomming-call-green-img" /></div>
+                        <div class="phone-app-incomming-call-red"><img src="img/phone/call/red.png" class="phone-app-incomming-call-red-img" /></div>
+                    </center>
+                </div>
+                <!-- -->
+
+            </div>
+        </div>
+
+
+        <div class="phone-main" id="phone-main">
+            <div class="phone-clock-main" id="phone-clock-main">04:28</div>
+            <div class="phone-icons" id="phone-icons">
+                <div class="phone-icon-phone" onclick="showPhone(true);"></div>
+                <div class="phone-icon-contacts" onclick="showContacts(true);"></div>
+                <div class="phone-icon-sms" onclick="prepareConversations();"></div>
+                <div class="phone-icon-settings" onclick="showSettings(true);"></div>
+            </div>
+        </div>
+
+
+        <!-- OKNO POMOCY -->
+        <div class="help-container-main" id="help-container-main">
+            <div class="help-bar">
+                <button class="tablink selected" style="margin-left:5px;" onclick="changeTab(event, 'cat1')">Wstęp</button>
+                <button class="tablink" onclick="changeTab(event, 'cat2')">Role Play</button>
+                <button class="tablink" onclick="changeTab(event, 'cat3')">Czat</button>
+                <button class="tablink" onclick="changeTab(event, 'cat4')">Grupy</button>
+                <button class="tablink" onclick="changeTab(event, 'cat5')">Pojazdy</button>
+                <button class="tablink" onclick="changeTab(event, 'cat6')">Przedmioty</button>
+                <button class="tablink" onclick="changeTab(event, 'cat7')">Animacje</button>
+                <button class="tablink" onclick="changeTab(event, 'cat8')">Interakcje</button>
+                <button class="tablink" onclick="changeTab(event, 'cat9')">Pojęcia</button>
+                <div style="float: right;
+                line-height: 39px;
+                margin-right: 21px;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;"
+                    onClick="toggleHelp();">X
+                </div>
+            </div>
+            <div class="help-container">
+
+
+                <!-- KATEGORIA INFORMACJE | POWITANIE W OKIENKU -->
+                <div id="cat1" class="help-tab">
+
+                    <h3>Wstęp</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    Witaj w oknie pomocy serwera Los Santos V Role-Play!<br><br>
+                    Przygotowaliśmy opis kilku najważniejszych aspektów rozgrywki tak żebyś mógł zrozumieć zasady
+                    rozgrywki
+                    w trybie Role Play.
+                    Całość podzielona została na kilka kategorii aby ułatwić Ci poruszanie.<br><br>
+                    W przypadku jakichkolwiek wątpliwości lub dodatkowych pytań, możesz skontaktować się z naszą ekipą
+                    na
+                    serwerze, forum lub discordzie.<br><br><br><br>
+
+                    <i>Miłej gry życzy ekipa LSVRP.pl</i>
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+                <!-- KONIEC KATEGORII -->
+
+
+                <!-- POCZĄTEK KATEGORII -->
+                <div id="cat2" class="help-tab" style="display:none">
+
+                    <h3>Czym właściwie jest Role Play?</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    Role Play jest próbą odzwierciedlenia realnego życia w świecie wirtualnym. W przypadku naszego
+                    serwera
+                    jest to uniwersum Grand Theft Auto V. Każdy z graczy podczas zakładania postaci nie tylko wybiera
+                    jej
+                    płeć i dane osobowe, ale powinien też mieć obmyślony plan jej kreowania.<br><br>
+
+                    Warto wspomnieć że wiedza i umiejętności Twojej postaci ograniczone są do tego czego dowiedziała
+                    się w
+                    świecie gry. Idąc tym tokiem myślenia, każda postać oznacza dla gracza nową historię, przeżycia i
+                    doświadczenia. <i>( Więcej dowiesz się w zakładce "Czat" )</i><br><br>
+
+                    Istnieją dwie podstawowe komendy służące do przeprowadzenia prawidłowej akcji RP.<br><br>
+
+                    Komenda <i><b>/me</b></i> służy do opisywania tego co w danym momencie robi Twoja postać.<br>
+                    Przykłady<br>
+                    <font style="color: #d380dd;"><b>** John Smith podchodzi do słupa i przygląda się wiszącemu
+                            ogłoszeniu.</b></font><br>
+                    <font style="color: #d380dd;"><b>** John Smith odbiera resztę od kasjera i chowa pieniądze do
+                            kieszeni.</b></font><br><br>
+
+                    Komenda <i><b>/do</b></i> służy do opisywania świata, tego co dzieje się wokół Twojej postaci.<br>
+                    Przykłady<br>
+                    <font style="color: #bf55cc;"><b>** Obok ławki leży mały, czerwony plecak. (( John Smith
+                            ))</b></font><br>
+                    <font style="color: #bf55cc;"><b>** Mężczyzna jest nieprzytomny, po jego twarzy spływa krew. ((
+                            John
+                            Smith ))</b></font><br><br>
+
+                    Jeżeli zrozumiałeś zastosowanie tych komend, postaraj się kreować świat najlepiej jak potrafisz,
+                    ogranicza Cię głównie wyobraźnia.
+
+                    <!-- KONIEC TEKSTU -->
+
+                </div>
+                <!-- KONIEC KATEGORII -->
+
+                <div id="cat3" class="help-tab" style="display:none">
+
+                    <h3>Czat</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    W trybie Role Play rozróżniamy dwa kanały czatów. W zależności od rodzaju naszej wypowiedzi
+                    używamy:<br><br>
+
+                    <b>
+                        <font color="green">In Character (IC)</font>
+                    </b> - dotyczy wszystkiego tego co powiązane jest ze
+                    światem gry. Są to głównie wypowiedzi Twojej postaci, akcje oraz opis otoczenia.<br><br>
+                    <b>
+                        <font color="green">Out Of Character (OOC)</font>
+                    </b> - dotyczy wszystkiego co związane jest ze
+                    światem realnym. To właśnie do tego czatu należą między innymi wiadomości prywatne. To właśnie za
+                    pomocą
+                    kanału OOC możesz zapytać graczy o komendy, o to kiedy ponownie spotkasz ich w grze, itd.
+                    <br><br>
+                    <b>Przykładowe użycie czatu IC</b><br>
+                    <i>John Smith mówi:</i> Przepraszam Pana, szukają Państwo może mechaników?<br>
+                    <i>John Smith krzyczy:</i> Zaczekaj!
+                    <br><br>
+                    <b>Przykładowe użycie czatu OOC</b><br>
+                    <i>(( John Smith (0): Muszę już spadać, jutro wejdę na serwer wieczorkiem. ))</i><br>
+                    <i>(( John Smith (12): Sorki, jak użyć telefonu? ))</i><br><br>
+
+                    <b>
+                        <font color="green">Komendy czatu IC</font>
+                    </b>
+                    <br>
+                    <ul>
+                        <li>/c [treść] - szept</li>
+                        <li>/k [treść] - krzyk</li>
+                        <li>![slot grupy] [treść] - radio IC wskazanej grupy</li>
+                        <li>/d [treść] - radio departamentowe wybranych grup</li>
+                        <li>/m [treść] - megafon (wymaga odpowiedniego przedmiotu)</li>
+                    </ul>
+                    <br>
+                    <b>
+                        <font color="green">Komendy czatu OOC</font>
+                    </b>
+                    <br>
+                    <ul>
+                        <li>/w [id gracza] [treść] - prywatna wiadomość do wskazanego gracza</li>
+                        <li>/re [treść] - odpowiedź na ostatnio otrzymaną wiadomość prywatną</li>
+                        <li>/b [treść] - czat OOC widoczny dla pobliskich graczy</li>
+                        <li>@[slot grupy] [treść] - czat OOC wskazanej grupy</li>
+                    </ul>
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+                <!-- KONIEC KATEGORII -->
+
+                <div id="cat4" class="help-tab" style="display:none">
+
+                    <h3>Grupy</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    W trybie RolePlay, Twoja postać może dołączyć do różnych grup. W zależności od typu grupy daje to
+                    różne
+                    możliwości.<br><br>
+                    Istnieją trzy podstawowe rodzaje:<br>
+                    <ul>
+                        <li>Biznes</li>
+                        <li>Organizacja przestępcza</li>
+                        <li>Organizacja publiczna</li>
+                    </ul>
+
+                    To właśnie w grupach możesz zarobić najwięcej pieniędzy. Każda z nich oferuje Ci dodatkowe komendy
+                    lub
+                    uprawnienia zależne od typu grupy. Aby otrzymać <font color="green">wypłatę</font> musisz
+                    przepracować
+                    odpowiedni czas wykonując zadania zlecone przez lidera lub jego pomocników. W czasie jednego dnia,
+                    z
+                    jednej grupy otrzymać możesz trzy wypłaty za każde przepracowane 20 minut.<br><br>
+
+                    Wypłaty rozdawane są automatycznie przy nocnym restarcie o godzinie 4:00.<br><br>
+
+                    Podstawowe komendy:<br>
+                    <ul>
+                        <li>/g lista - Wyświetla listę grup do których należy Twoja postać (dostępne również w menu
+                            szybkich
+                            akcji)
+                        </li>
+                        <li>/g [slot] info - Podstawowe informacje o grupie</li>
+                        <li>/g [slot] duty - Rozpoczęcie lub zakończenie służby (wymagane do otrzymania wypłaty)</li>
+                        <li>/g [slot] podaj - Sprzedaż przedmiotu z magazynu grupy</li>
+                    </ul>
+
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+                <!-- KONIEC KATEGORII -->
+
+                <div id="cat5" class="help-tab" style="display:none">
+
+                    <h3>Pojazdy</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    Nieodłączną częścią rozgrywki są pojazdy. To dzięki nim poruszanie się Twojej postaci po wirtualnym
+                    świecie staje się o wiele wygodniejsze. W tym trybie gry pojazdy wymagają tankowania, napraw i
+                    przede
+                    wszystkim kluczyków. Każdy pojazd widoczny na mapie ma właściciela którym może zostać gracz lub
+                    grupa.
+                    Tylko osoby uprawnione mogą usiąść za kierownicą danego pojazdu.<br><br>
+
+                    Każdy pojazd należący do gracza może być zespawnowany i odspawnowany. Mówiąc prościej, gracz może w
+                    danej chwili sprawić aby pojazd pojawił się lub zniknął ze świata gry. Oczywiście dotyczy to
+                    momentów w
+                    których nikt nie odgrywa akcji na danym pojeździe.<br><br>
+
+                    Warto wspomnieć że poruszając się po drogach należy przestrzegać zasad ruchu drogowego i unikać
+                    zachowań
+                    sprzecznych ze zdrowym rozsądkiem. Odpadają skoki z klifów, przez mosty, wyskoki nad budynkami i
+                    cała
+                    reszta kaskaderskich zachowań.<br><br>
+
+                    Mówiąc prościej, unikaj złych zachowań na drodze a będziesz bezpieczny. W przeciwnym razie mogą
+                    zatrzymać Cię służby porzadkowe!<br><br>
+
+                    <b>Podstawowa obsługa pojazdów</b><br><br>
+                    <b>Komendy</b><br>
+                    <ul>
+                        <li>/v lista (l) - Lista pojazdów należących do Twojej postaci</li>
+                        <li>/v info - Informacje o pojeździe w którym obecnie się znajdujesz</li>
+                        <li>/v parkuj - Zaparkowanie pojazdu w aktualnym miejscu (to w miejscu zaparkowania pojazd
+                            będzie
+                            spawnowany)
+                        </li>
+                        <li>/v z - Zamknięcie lub otwarcie pojazdu</li>
+                    </ul>
+                    <br>
+                    <b>Skróty klawiszowe</b><br>
+                    <ul>
+                        <li>L - Odpalanie lub gaszenie silnika pojazdu</li>
+                        <li>H - Włączanie i wyłączanie świateł</li>
+                        <li>3,4 (nad klawiszami WSAD) - Włączanie/wyłączanie kierunkowskazów</li>
+                        <li>F - wejście do pojazdu na miejsce kierowcy</li>
+                        <li>F (Przytrzymane) - wejście do pojazdu na miejsce pasażera</li>
+                    </ul>
+
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+
+                <!-- KONIEC KATEGORII -->
+                <div id="cat6" class="help-tab" style="display:none">
+
+                    <h3>Przedmioty</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    Każda postać w świecie RolePlay może posiadać przy sobie różne przedmioty. Każdy rodzaj ma inne
+                    zastosowanie i wywołuje różne efekty. Przedmioty pozyskać możesz w sklepie na stacji benzynowej,
+                    biznesach, od innych graczy czy nawet znaleźć leżące na ulicy. Niektóre z nich są wielokrotnego
+                    użytku
+                    (jak telefon), niektóre jednak znikną już przy pierwszym użyciu (np. jedzenie i picie).<br><br>
+                    Jako właściciel przedmiotu masz kilka możliwości poza wykorzystaniem przedmiotu. Możesz odkładać i
+                    podnosić go w dowolnym miejscu (również w pojazdach), oferować go graczowi za darmo lub pod
+                    warunkiem
+                    zapłaty. Niektóre z przedmiotów wymagane są również do złożenia oferty w biznesie (np. lakierowanie
+                    w
+                    warsztacie).<br><br>
+
+                    Pamiętaj że niektóre przedmioty w świecie gry są nielegalne i Twoja postać może ponieść
+                    konsekwencje ich
+                    posiadania w przypadku kontroli.
+                    <br><br>
+                    <b>Podstawy używania przedmiotów</b><br>
+                    <ul>
+                        <li>I - otwiera okno ekwipunku</li>
+                        <li>Po naciśnięciu na wybrany przedmiot możesz go odłożyć lub użyć</li>
+                        <li>Na dole okna ekwipunku wyświetlane są przedmioty leżące w pobliżu Twojej postaci (po
+                            naciśnięciu
+                            na przedmiot możesz go podnieść)
+                        </li>
+                    </ul>
+
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+                <!-- KONIEC KATEGORII -->
+
+                <!-- KONIEC KATEGORII -->
+                <div id="cat7" class="help-tab" style="display:none">
+
+                    <h3>Animacje</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    Animacje są nieodłączną częścią trybu RolePlay. Fakt, że tryb ten wymaga wielu akcji złożonych z
+                    komend
+                    /me oraz /do nie oznacza, że musimy opierać się tylko na nich w każdej poszczególnej sytuacji.<br><br>
+                    Przedstawienie położenia postaci w różnych pozach ułatwi grę Tobie oraz pozostałym graczom, którzy
+                    będą
+                    wchodzić w interakcję z Twoją postacią.<br><br>
+
+                    <b>Użycie:</b><br>
+                    Animacji używamy wpisując na czacie ich nazwę zaraz po kropce.<br>
+                    <br>
+                    <i>.nazwa</i><br><br>
+
+                    Listę animacji znajdziesz pod komendą /anim lub /anims
+
+
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+
+                <!-- KONIEC KATEGORII -->
+                <div id="cat8" class="help-tab" style="display:none">
+
+                    <h3>Interakcje</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    Na serwerach typu RolePlay najważniejsze są interakcje z innymi graczami, jednak w pewnych
+                    kwestiach
+                    musisz odwołać się bezpośrednio do zaimplementowanych systemów. Niech za przykład posłuży
+                    tankowanie
+                    pojazdu na stacji benzynowej. W pierwszej kolejności musisz zainicjować to, że chcesz zatankować
+                    swój
+                    pojazd.<br><br>
+                    Na LSVRP w każdej tego typu sytuacji z pomocą przychodzi okienko interakcji - dzięki niemu możesz
+                    otworzyć bagażnik pojazdu, czy zrobić zakupy w sklepie. Opcji jest wiele, ale sam przycisk
+                    odpowiadający
+                    za to tylko jeden. Tym magicznym przyciskiem jest klawisz <b>"B"</b>.
+
+
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+
+                <!-- KONIEC KATEGORII -->
+
+                <div id="cat9" class="help-tab" style="display:none">
+
+                    <h3>Pojęcia</h3> <!-- TYTUŁ KATEGORII -->
+
+                    <!-- TEKST W ZAKŁADCE -->
+                    W każdej grze panują pewne zasady, na serwerach typu RolePlay również takowe są. Istnieją pewne
+                    pojęcia,
+                    których znajomość oraz ich przestrzeganie jest kluczowym elementem tego typu rozgrywki. Stosuj się
+                    do
+                    nich, aby nie łamać zasad, a tym samym unikać kar. Poniżej znajdziesz większość pojęć, które mają
+                    zastosowanie na LSVRP.<br><br>
+
+                    <br><br>
+                    <b>Spis pojęć trybu RolePlay:</b><br>
+                    <ul>
+                        <li><b>Power Gaming (PG) -</b> Jest to odegranie akcji na drugim graczu w taki sposób, żeby ten
+                            musiał odegrać narzuconą przez nas reakcję - przykład: /me popycha Johna Blacka tak, że ten
+                            łamie rękę. Jest to niewłaściwie rozegrana akcja. Aby poprawnie odegrać akcję wystarczy
+                            napisać:
+                            /me mocno popycha Johna Blacka, i zaczekać na reakcję drugiego gracza. W skrajnych
+                            wypadkach
+                            frakcje porządkowe, takie jak PD/SD mają zezwolenie na tego typu zagrania, jeśli gracz jest
+                            oporny, czy też nie odpowiada na akcje policjantów - wtedy mogą wymusić na nim parę reakcji
+                            -
+                            takich jak zakucie w kajdanki.
+                        </li>
+                        <li><b>Brutally Wounded (BW) -</b> Jeśli ulegniemy poważnemu wypadkowi, ktoś nas brutalnie
+                            pobije,
+                            bądź postrzeli - zazwyczaj z tych powodów tracimy przytomność. Tak samo jest w grze, jeśli
+                            odniesiemy poważne obrażenia, Nasza postać automatycznie traci HP - jeśli spadną one do
+                            zera,
+                            system nadaje nam <b>BW</b>, stan w którym nasza postać nie może się ruszać, mówić. Jedyne,
+                            co
+                            przez ten czas możemy zrobic, to opisywać stan swojej postaci za pomocą komendy /do.
+                        </li>
+                        <li><b>Meta Gaming (MG) -</b> Jest to wykorzystywanie informacji zdobytych drogą OOC w celu
+                            czerpania korzyści IC. Najprostrzym przykładem może być nick nad głową postaci, nowo
+                            poznanego
+                            gracza - IC nam się nie przedstawił, jednakże nad jego głową widnieje nick - nie wolno go
+                            więc
+                            wykorzystać. Innym przykładem może być zdobyta poprzez forum informacja na temat miejsca
+                            przebywania organizacji przestępczej, jej nazwy, tudzież członków - wszystko to jest
+                            niezgodnę z
+                            zasadami RP.
+                        </li>
+                        <li><b>DeathMatch (DM) -</b> Jest to celowe zabijanie (w tym uderzanie) przypadkowych graczy
+                            bez
+                            żadnego uzasadnienia drogą IC. Jeśli chcesz kogoś uderzyć musisz mieć ku temu konkretny
+                            powód. W
+                            realnym świecie, że nie chodzisz po mieście bez celu i nie uderzasz każdego napotkanego
+                            przechodnia.
+                        </li>
+                        <li><b>Character Kill (CK) -</b> Uśmiercenie naszej postaci, jeśli odniesiesz poważne obrażenia
+                            -
+                            zostaniesz wielokrotnie postrzelony, to raczej nikt tego nie przetrwa - stosownym jest
+                            wtedy
+                            wpisanie <b>CK</b>, poprzez komendę /akceptujsmierc.
+                        </li>
+                        <li><b>Ninja Jacking (NJ) -</b> Zamierzone wyrzucenie gracza z pojazdu, by następnie mu ten
+                            pojazd
+                            ukraść. Jest to zabronione i mało realne zachowanie.
+                        </li>
+                        <li><b>Celebrity Name (CN) -</b> Nazywanie swojej postaci imieniem oraz nazwiskiem sławnej
+                            osoby np.
+                            Britney Spears.
+                        </li>
+                        <li><b>Bunny Hop (BH) -</b> Jest to używanie ciągłego skoku w celu szybszego znalezienia się w
+                            danym
+                            miejscu.
+                        </li>
+                        <li><b>AdminJail (AJ) -</b> Pomieszczenie, bądź obiekt, do którego trafiamy za złamanie
+                            regulaminu -
+                            jest to kara nadawana przez członków ekipy serwera. W miejscu tym nie ma żadnego inego
+                            gracza.
+                            Po odbyciu kary, nie odgrywamy, że nasza postać tam była - to kara OOC.
+                        </li>
+                    </ul>
+
+
+                    <!-- KONIEC TEKSTU-->
+
+                </div>
+
+                <!-- KONIEC KATEGORII -->
+
+
+            </div>
+
+        </div>
+
+        <!-- -->
+
+
+    </div>
+</body>
+
+</html>

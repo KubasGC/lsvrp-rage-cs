@@ -1,0 +1,255 @@
+body {
+  font-family: futura_ltregular;
+  position: relative;
+}
+
+@font-face {
+  font-family: 'futura_ltregular';
+  src: url('../fonts/futurapt/futuralt.woff2') format('woff2'), url('../fonts/futurapt/futuralt.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'futura_ltbold';
+  src: url('../fonts/futurapt/futuralt-bold1-webfont.woff2') format('woff2'), url('../fonts/futurapt/futuralt-bold1-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.main-container {
+  display: flex;
+  position: absolute;
+  left: 25%;
+  top: 300px;
+}
+
+.panel-personal {
+  width: 250px;
+  height: 140px;
+  background-color: red;
+  float: left;
+  background-color: rgba(66, 65, 70, 0.7);
+  box-shadow: inset -10px 0px 30px -10px #444;
+}
+
+.panel-stats {
+  float: left;
+  width: 600px;
+  height: 300px;
+  background-color: white;
+}
+
+.exit {
+  background-image: url("../images/x.png");
+  background-size: cover;
+  width: 8px;
+  height: 8px;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  left: 98%;
+  top: 2%;
+  opacity: 0.6;
+  z-index:999;
+}
+
+.panel-stats-header {
+  width: 100%;
+  height: 93px;
+  background-color: rgb(245, 245, 245);
+}
+
+.personal-name {
+  display: flex;
+  color: white;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 17px;
+}
+
+.personal-uid {
+  display: flex;
+  color: white;
+  margin-top: 2px;
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.personal-world {
+  display: flex;
+  color: white;
+  margin-top: 2px;
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.personal-globalacc {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 20px;
+  color: white;
+  font-size: 12px;
+}
+
+.personal-ip {
+  display: flex;
+  margin-left: 20px;
+  color: white;
+  font-size: 12px;
+}
+
+.panel-stats-info {
+  display: flex;
+  max-height: 100px;
+}
+
+.infos {
+  color: rgba(80, 80, 80, 0.8);
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  margin-top: 15px;
+  margin-left: 15px;
+  max-height: 10px;
+}
+
+.panel-stats-menu {
+  float: left;
+  margin-top: 35px;
+  margin-left: 15px;
+  color: rgba(80, 80, 80, 0.3);
+  font-weight: 600;
+}
+
+.panel-stats-menu span {
+  margin-right: 60px;
+  display: inline-block;
+  text-decoration: none
+}
+
+.panel-stats-menu span:hover {
+  color: rgba(80, 80, 80, 0.7);
+}
+
+.panel-stats-menu span:hover:after {
+  content: "";
+  display: block;
+  width: 40px;
+  border-bottom: 2px solid rgb(187, 166, 47);
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+/*//////////////////Zakładka Płatności////////////*/
+
+.payday-card, .panel-stats-payday {
+  max-width: 400px;
+}
+
+.card-image {
+  background-image: url("../images/karta.png");
+  background-size: cover;
+  margin-top: 10px;
+  position: relative;
+  height: 170px;
+  width: 300px;
+  z-index:999;
+}
+
+.account-number {
+  display: flex;
+  font-size: 11px;
+  margin-left: 70px;
+  margin-top: 5px;
+  color: rgba(28, 28, 28, 0.5);
+  font-weight: bold;
+}
+
+.account-number-card {
+  position: absolute;
+  display: inline-block;
+  top: 45%;
+  left: 17%;
+  word-spacing: 26px;
+  color: white;
+}
+
+.name-card {
+  position: absolute;
+  display: inline-block;
+  top: 83%;
+  left: 16.5%;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.expiration-card {
+  position: absolute;
+  display: inline-block;
+  top: 83%;
+  left: 78%;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 10px;
+}
+
+.payday-info {
+  position: absolute;
+  display: grid;
+  top: 33%;
+  left: 67%;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  float: left;
+  opacity: 0.7;
+}
+
+.labels {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+/*//////////////////Zakładka Konto Globalne////////////*/
+
+.global-info {
+  display: grid;
+  font-weight: bold;
+  margin-left: 16px;
+  font-size: 15px;
+  margin-top: 20px;
+  line-height: 25px;
+  opacity: 0.7;
+}
+
+/*//////////////////Zakładka Postac////////////*/
+
+.character-info {
+  display: grid;
+  font-weight: bold;
+  margin-left: 16px;
+  font-size: 15px;
+  margin-top: 5px;
+  line-height: 20px;
+  opacity: 0.7;
+}
+
+/*//////////////////Zakładka Organizacje////////////*/
+
+.org-info {
+  display: grid;
+  font-weight: bold;
+  margin-left: 60px;
+  font-size: 14px;
+  margin-top: 5px;
+  line-height: 20px;
+  opacity: 0.7;
+}
+
+.biznes {
+  font-size: 18px;
+  margin-left: -40px;
+  margin-bottom: 10px;
+  margin-top: 7px;
+}

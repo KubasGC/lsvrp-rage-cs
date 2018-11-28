@@ -1,0 +1,24 @@
+#bw-timer {
+    width: 200px;
+    height: 60px;
+    /* background-color: rgb(100, 100, 100); */
+    font-family: Quicksand, sans-serif;
+    display: none;
+}
+
+#bw-timer .header {
+    text-align: center;
+    color: rgba(200, 200, 200, 200);
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: bold;
+    text-shadow: -1px 0px 10px rgba(150, 150, 150, 1);
+}
+
+#bw-timer .time {
+    color: rgba(255, 255, 255, 200);
+    font-size: 50px;
+    text-align: center;
+    line-height: 40px;
+    text-shadow: -1px 0px 10px rgba(150, 150, 150, 1);
+}

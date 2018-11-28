@@ -1,0 +1,9 @@
+#car-panel {
+    width: 100px;
+    /*display: none;*/
+}
+
+.car-speed {
+    width:100%;
+    text-align: center;
+}

@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'BebasNeue';
+  font-style: normal;
+  font-weight: 400;
+  src: local('BebasNeue'), local('BebasNeue Regular'), url('../fonts/bebasneue/bebasneue_regular.woff') format('woff'), url('../fonts/bebasneue/bebasneue_regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'BebasNeue';
+  font-style: normal;
+  font-weight: 700;
+  src: local('BebasNeue'), local('BebasNeue Bold'), url('../fonts/bebasneue/bebasneue_bold.woff') format('woff'), url('../fonts/bebasneue/bebasneue_bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'BebasNeue';
+  font-style: normal;
+  font-weight: 300;
+  src: local('BebasNeue'), local('BebasNeue Light'), url('../fonts/bebasneue/bebasneue_light.woff') format('woff'), url('../fonts/bebasneue/bebasneue_light.woff2') format('woff2');
+}

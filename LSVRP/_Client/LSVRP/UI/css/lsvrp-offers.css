@@ -1,0 +1,60 @@
+#offers-panel {
+    width: 400px;
+    display: none;
+}
+
+.modal-box-content .offers-title {
+    font-size: 13px;
+    font-family: Quicksand, sans-serif;
+    text-align: center;
+    font-weight: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    color: rgb(117, 125, 117);
+}
+
+.modal-box-content .offers-price {
+    text-align: center;
+    font-size: 25px;
+    font-family: Quicksand, sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.modal-box-content .offers-info {
+    font-style: italic;
+    font-family: Quicksand, sans-serif;
+    font-size: 11px;
+    text-align: center;
+    color: rgb(189, 195, 199);
+}
+
+.modal-box-content .offers-buttons {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.modal-box-content .offers-button {
+    display: inline-block;
+    font-family: Quicksand, sans-serif;
+    background-color: rgb(80, 84, 87);
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.modal-box-content .offers-button.close {
+    background-color: rgb(51, 54, 57) !important;
+}
+
+.modal-box-content .offers-button.close:hover {
+    background-color: rgb(38, 40, 43) !important;
+}
+
+.modal-box-content .offers-button:hover {
+    background-color: rgb(67, 72, 76) !important;
+}

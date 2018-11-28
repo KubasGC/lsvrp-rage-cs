@@ -1,0 +1,57 @@
+#modal-list-panel {
+    width: 500px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+
+#modal-list-panel .modal-list-items {
+    height: 300px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+#modal-list-panel .modal-list-text {
+    padding: 10px;
+}
+
+#modal-list-text-area {
+    width: 100%;
+    height: 45px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 18px;
+    font-family: Quicksand, sans-serif;
+
+}
+
+#modal-list-panel .list-item {
+    font-family: Quicksand, sans-serif;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding-left: 10px;
+    height: 40px;
+    line-height: 40px;
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    border-bottom: 1px dotted rgba(50, 50, 50, 0.3);
+}
+
+#modal-list-panel .list-item.no-overflow {
+    overflow: visible !important;
+    word-break: break-all !important;
+    height: auto !important;
+    line-height: 2em !important;
+    hyphens: auto !important;
+}
+
+#modal-list-panel .list-item:hover {
+    background: rgb(240, 240, 240) !important;
+    border-bottom: 1px dotted rgba(50, 50, 50, 0) !important;
+}

@@ -1,0 +1,30 @@
+namespace LSVRP.New.Enums
+{
+    public enum ItemType
+    {
+        None,
+        Weapon,
+        Ammo,
+        Phone,
+        Megaphone,
+        Drink,
+        Food,
+        Mask,
+        Skin,
+        Paint,
+        Drugs,
+        Cube,
+        Body,
+        Armor,
+        Medicine,
+        Carmod,
+        Canister,
+        Cigarette,
+        Topup,
+        Cruise,
+        Alcohol,
+        PlayingCards,
+        Watch,
+        Mugshot
+    }
+}

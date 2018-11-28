@@ -1,0 +1,93 @@
+.gaspump {
+    background-color: white;
+    width:260px;
+    height:400px;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    border-radius: 5px;
+    box-shadow: 10px 10px 19px 1px rgba(0,0,0,0.19);
+    font-family: Quicksand, sans-serif;
+    display:none;
+}
+
+.pump-bar {
+    width: 150px;
+    text-align:right;
+    font-size:19px;
+    pointer-events: none;
+}
+
+.pump-label {
+    margin-left:52px;
+}
+
+.pump-fuelbutton {
+        background-color: #1f81c6;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+}
+
+.pump-fuelbutton:hover{
+    background-color: #156299;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.pump-paybutton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pump-paybutton:hover{
+background-color: #4CA000;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+
+.pump-cancelbutton {
+    background-color: #c63919;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pump-cancelbutton:hover{
+background-color: #9e2c12;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+

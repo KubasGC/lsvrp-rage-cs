@@ -1,0 +1,343 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+	font-family: 'CocoGothic';
+	color: #ffedc5;
+	line-height: 1.5;
+	margin: 0px;
+	padding: 0px;
+	-webkit-backface-visibility: hidden;
+}
+
+p {
+	margin: 0px;
+}
+
+ul {
+	margin: 0px;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.font-16 {
+	font-size: 16px;
+}
+
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
+
+
+
+.center-align {
+	text-align: center;
+}
+
+.right-align {
+	text-align: right;
+}
+
+.left-align {
+	text-align: left;
+}
+
+
+.font-bold {
+	font-weight: bold;
+}
+
+.font-12 {
+	font-size: 12px;
+}
+
+.font-14 {
+	font-size: 14px;
+}
+
+.font-18 {
+	font-size: 18px;
+}
+
+.font-24 {
+	font-size: 24px;
+}
+
+.center-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+input {
+	background: transparent;
+	outline: none;
+	box-shadow: none;
+	color: #ffedc5;
+	padding: 0px 4px;
+}
+
+input:focus, input:active {
+	outline: none;
+	box-shadow: none;
+}
+
+.border-hr {
+	height: 2px;
+	width: 90%;
+	margin: 5px auto;
+	background-image: url('../images/border.png');
+	background-size: 100% 100%;
+	background-repeat: repeat-y;
+}
+
+/* OKIENKA */
+
+.win-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.win-header {
+	background: rgba(19, 19, 19, 0.5);
+	margin-bottom: 5px;
+	color: rgba(255,237,197,0.6);
+	font-family: 'BebasNeue';
+	font-size: 22px;
+	text-align: center;
+}
+
+.win-content {
+	background: rgba(19, 19, 19, 0.5);
+	margin-bottom: 5px;
+	padding-top: 25px;
+	color: rgba(255,237,197,0.6); /*#ffedc5;*/
+	font-family: 'CocoGothic';
+	font-weight: 400;
+}
+
+.win-footer {
+	background: rgba(19, 19, 19, 0.5);
+	padding: 5px 10px;
+	font-size: 14px;
+}
+
+.win-accept {
+	padding: 10px;
+	margin-right: 10px;
+    display: inline-block;
+	width: 35px;
+    text-align: center;
+    line-height: 1.0;
+	background-color: #64a27d;
+	border-radius: 5px;
+}
+
+.win-cancel {
+	padding: 10px;
+	margin-right: 10px;
+    display: inline-block;
+	width: 35px;
+    text-align: center;
+    line-height: 1.0;
+	background-color: #c56262;
+	border-radius: 5px;
+}
+
+.win-top-radius {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+}
+
+.win-button {
+	padding: 2px 5px;
+	color: #ffffff;
+	font-family: 'BebasNeue';
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	transition: 0.2s;
+	font-family: Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+	-webkit-transition: 0.2s;
+	cursor: pointer;
+	border: 3px solid transparent;
+}
+
+.win-button:hover {
+	background-color: rgba(0, 207, 255, 0.8);
+	border: 3px solid rgba(4,191,234,0.8);
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+}
+
+.win-button-cancel:hover {
+	background-color: rgba(197, 98, 98, 0.8) !important;
+	border: 3px solid rgba(171,82,82,0.8) !important;
+}
+
+.win-button-accept:hover {
+	background-color: rgba(100, 162, 125, 0.8) !important;
+	border: 3px solid rgba(100, 162, 125,0.8) !important;
+}
+
+
+.checkbox {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	background-image: url('../images/checkboxu.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	vertical-align: bottom;
+}
+
+.checkbox-label {
+	line-height: 1.0;
+	vertical-align: bottom;
+}
+
+.checkbox.selected {
+	background-image: url('../images/checkboxs.png');
+}
+
+
+/* LOGOWANIE */
+
+
+#login-container {
+	width: 389px;
+	height: 594px;
+	background-image: url('../images/login_bg.png');
+	background-repeat: no-repeat;
+	padding-bottom: 10px;
+	color: #ffffff;
+	font-size: 14pt;
+	font-family: 'Archivo', sans-serif;
+	position: absolute;
+	z-index: 1;
+
+}
+
+.login-form-infobox {
+	background: white;
+	width:90%;
+    margin-left: 5%;
+    margin-top: 40px;
+}
+
+.login-form-infobox .info-type {
+	color: black;
+}
+
+.login-button {
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 4px;
+	background-color: #c69c6d;
+	margin-top: 30px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 40px; 
+	cursor: pointer;
+	width: 40%;
+	height: 40px;
+}
+
+.login-button:hover {
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 4px;
+	background-color: #916a3d;
+	cursor: pointer;
+	width: 40%;
+	height: 40px;
+}
+
+.login-input-name {
+	padding: 30px 20px 2px 20px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.login-input {
+	padding: 10px 25px;
+	margin-bottom: 5px;
+}
+
+.login-input i {
+	color: rgba(255,225,197,0.6);
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.login-input input {
+	width: 235px;
+	height: 25px;
+	margin: 0px;
+	border: 0;
+	outline: 0;
+	border-bottom: 2px solid rgba(108, 111, 114,1);
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.login-remember {
+	padding: 15px 20px 15px 20px;
+}
+
+#login-container .logo {
+	opacity: 0.6;
+	transition: opacity 0.3s;
+}
+
+#login-container .logo:hover {
+	opacity: 1.0;
+	transition: opacity 0.5s;
+}
+
+.login-footer {
+	width: 75%;
+	margin: auto;
+}
+
+.login-footer hr {
+	border-bottom: 1px solid rgba(255,237,197,0.6);
+}
+
+.login-footer p {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12px;
+}
+
+#login-container .win-button {
+	font-size: 24px;
+}

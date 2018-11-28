@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: italic;
+  font-weight: 400;
+  src: local('futuralt-oblique'), url('../fonts/futurapt/futuralt-oblique.woff2') format('woff2'), url('../fonts/futurapt/futuralt-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: italic;
+  font-weight: 300;
+  src: local('futuralt-lightoblique'), url('../fonts/futurapt/futuralt-lightoblique.woff2') format('woff2'), url('../fonts/futurapt/futuralt-lightoblique.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: italic;
+  font-weight: 500;
+  src: local('futuralt-heavyoblique'), url('../fonts/futurapt/futuralt-heavyoblique.woff2') format('woff2'), url('../fonts/futurapt/futuralt-heavyoblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: italic;
+  font-weight: 600;
+  src: local('futuralt-boldoblique'), url('../fonts/futurapt/futuralt-boldoblique.woff2') format('woff2'), url('../fonts/futurapt/futuralt-boldoblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: italic;
+  font-weight: 700;
+  src: local('futuralt-extraboldoblique'), url('../fonts/futurapt/futuralt-extraboldoblique.woff2') format('woff2'), url('../fonts/futurapt/futuralt-extraboldoblique.woff') format('woff');
+}
+

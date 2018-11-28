@@ -1,0 +1,67 @@
+.scoretab {
+    background-color: rgba(81, 85, 88, 0.6);
+    width:800px;
+    min-height: 50px;
+    max-height:600px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 10px 10px 19px 1px rgba(0,0,0,0.19);
+    font-family: Bebas, sans-serif;
+    z-index: 20;
+    display: none;
+}
+
+.scoretab .left {
+    background-color: rgba(81, 85, 88, 1.0);
+    border-top-left-radius: 5px;
+    width:50%;
+    float:left;
+    height:40px;
+}
+
+.scoretab .right {
+    background-color: rgba(81, 85, 88, 1.0);
+    border-top-right-radius: 5px;
+    width:50%;
+    float:left;
+    text-align: right;
+    height:40px;
+    color: white;
+    font-family: Quicksand;
+}
+
+.scoretab .right .text {
+    position: relative;
+    top: 9px;
+    right: 15px;
+}
+
+.tablediv {
+    position: relative;
+    height: 535px;
+    width: 805px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+table {
+    width:100%;
+    color: white;
+}
+
+td {
+    text-align:center;
+}
+
+th {
+    text-align:center;
+}
+
+.tr2 {
+    background-color: rgba(0,0,0,0.3);
+}

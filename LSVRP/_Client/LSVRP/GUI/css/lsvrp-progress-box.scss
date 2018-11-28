@@ -1,0 +1,50 @@
+.progress-box {
+
+	width: 500px;
+	height: 80px;
+	top: 100%;
+	transition: top 1s ease;
+
+	// background: rgba(0, 0, 0, 0.4);
+
+	.header {
+		background: rgba(9,104,155,0.9);
+		height: 25px;
+		line-height: 25px;
+		color: white;
+		font-family: "Myriad Pro Light", serif;
+		text-align: center;
+	}
+
+	.body {
+		background: rgba(0, 0, 0, 0.6);
+		height: 55px;
+
+		.space {
+			height: 10px;
+		}
+
+		.pbox {
+			width: 450px;
+			margin: auto;
+			height: 20px;
+			background: rgb(31, 103, 142);
+
+			.progress {
+				width: 0px;
+				transition: width 700ms ease;
+				height: 100%;
+				background: rgb(41, 142, 196);
+			}
+		}
+
+		.info {
+			color: rgba(200, 200, 200, 1);
+			font-family: "Myriad Pro Light", serif;
+			text-align: left;
+			font-size: 14px;
+			padding: 3px;
+			text-align: center;
+		}
+	}
+}

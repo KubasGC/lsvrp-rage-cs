@@ -1,0 +1,242 @@
+
+
+#characters {
+	position: fixed;
+	display: inline-block;
+	width: 1120px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#characters > #left {
+	float: left;
+	position: relative;
+	width: 300px;
+	height: 460px;
+	padding: 10px;
+	background-image: url('../images/characterchoosebg.png');
+	background-size: cover;
+	background-position: center bottom;
+	box-shadow: 0px 6px 10px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 0px 6px 10px rgba(0,0,0,0.4);
+	z-index: 90;
+}
+
+#characters > #left > #player-info {
+	position: relative;
+}
+
+#characters > #left > #player-info > #avatar {
+	float: left;
+	position: relative;
+}
+
+#characters > #left > #player-info > #avatar > img {
+	width: 98px;
+	height: 98px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border: 4px solid #c69c6d;
+}
+
+#characters > #left > #player-info > #avatar > .hours {
+	position: absolute;
+	padding: 5px 10px;
+	font-weight: 500;
+	font-size: 13px;
+	bottom: 0px;
+	left: 50%;
+}
+
+#characters > #left > #player-info > #info {
+	margin-left: 110px;
+	padding-top: 20px;
+	font-weight: 300;
+	font-size: 17px;
+}
+
+#characters > #left > #player-info > #info > .rank {
+	display: block;
+	font-size: 13px;
+	font-weight: 300;
+}
+
+#characters > #left > #player-info > #icons {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	text-align: right;
+}
+
+#characters > #left > #player-info > #icons img {
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+#characters > #left > #mottd {
+	margin-top: 40px;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.5;
+	background-image: url('../images/cytat.png');
+	background-size: 100% 100%;
+	padding: 0px 20px;
+}
+
+#characters > #left > #mottd > span {
+	opacity: 0.4;
+}
+
+#characters > #left > #mottd > p {
+	font-style: normal;
+	text-align: center;
+}
+
+#characters > #left > #stats {
+	position: absolute;
+	bottom: 40px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+#characters > #left > #stats > div {
+	display: inline-block;
+}
+
+#characters > #left > #stats > div:first-child {
+	margin-right: 60px;
+}
+
+
+#characters > #right {
+	float: right;
+	margin-top: 15px;
+	width: 820px;
+	height: 430px;
+	background: #fff;
+	color: #414755;
+	font-weight: 500;
+	font-size: 17px;
+	z-index: 80;
+	-webkit-border-top-left-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+}
+
+#characters > #right > .table {
+	position: relative;
+	padding: 10px 0px;
+	height: 360px;
+	overflow: scroll-y;
+}
+
+#characters > #right > .table > .thead > div,
+#characters > #right > .table > .tbody > .rowek > div {
+	display: inline-block;
+}
+
+#characters > #right > .table > .thead {
+	color: rgba(26,26,26,0.4);
+	padding: 10px 0px;
+	border-bottom: 1px solid rgba(26,26,26, 0.2);
+}
+
+#characters > #right > .table > .tbody > .rowek {
+	padding: 10px 0px;
+	text-shadow: 0px 0px 1px rgba(0,0,0, 0.1);
+}
+
+#characters > #right > .table > .tbody > .rowek.active {
+	color: #ffffff;
+	background-color: #c69c6d;
+}
+
+#characters > #right > .table > .tbody > .rowek.dead {
+	background-color: #ebebeb;
+	color: rgba(65,71,85, 0.3);
+}
+
+#characters > #right > .table > .tbody > .rowek.blocked {
+	background-color: #d3d3d3;
+	color: rgba(65,71,85, 0.3);
+}
+
+
+#characters > #right > .table .uid {
+	width: 80px;
+	text-align: center;
+}
+
+#characters > #right > .table .postac {
+	width: 200px;
+}
+
+#characters > #right > .table .przegrane {
+	width: 80px;
+	text-align: center;
+}
+
+#characters > #right > .table .nabytek {
+	width: 360px;
+	text-align: center;
+}
+
+#characters > #right > .table .status {
+	width: 70px;
+	text-align: center;
+}
+
+#characters > #right > .table > #down {
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#characters > #right > #choose {
+	position: relative;
+	height: 70px;
+	color: #fff;
+	box-shadow: 0px -5px 5px rgba(0,0,0, 0.1);
+}
+
+#characters > #right > #choose > #button-enter {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+#characters > #right > #choose > #button-enter img {
+	height: 70px;
+}
+
+#characters > #right > #choose > #choose-info {
+	width: 625px;
+	text-align: center;
+}
+
+#characters > #right > #choose > #choose-info > div {
+	display: inline-block;
+	position: relative;
+	margin: 0px 20px;
+	padding: 26px 0px;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+#characters > #right > #choose > #choose-info > div.frakcja {
+	font-weight: 300;
+}
+
+#characters > #right > #choose > #choose-info > div > span {
+	position: absolute;
+	bottom: 5px;
+	right: 0px;
+	left: 0px;
+	font-size: 13px;
+	font-weight: 300;
+	opacity: 0.2;
+}

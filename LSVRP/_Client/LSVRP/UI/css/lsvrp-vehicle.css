@@ -1,0 +1,99 @@
+@import url('http://fonts.googleapis.com/css?family=Play:700,400');
+
+#speedometer {
+    width: 500px;
+    height: 300px;
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    margin-bottom: 2em;
+    z-index: -1;
+    display: none;
+    -webkit-filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
+}
+
+.fault {
+    fill: #f01818;
+    opacity: 0.4;
+    
+}
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* css formats for the gauge */
+
+.gauge .domain {
+    stroke-width: 2px;
+    stroke: #eee;
+}
+
+.gauge .tick line {
+    stroke: #eee;
+    stroke-width: 2px;
+}
+
+.gauge line {
+    stroke: #eee;
+}
+
+.gauge .arc,
+.gauge .cursor {
+    opacity: 0;
+}
+
+.gauge .major {
+    fill: #eee;
+    font-size: 20px;
+    font-family: 'Play', verdana, sans-serif;
+    font-weight: normal;
+}
+
+.fuel-label .axis g text {
+    font: 10px 'Play';
+}
+
+.fuel-label .domain {
+    stroke-width: 0;
+}
+
+.fuel .domain {
+    stroke-width: 2px;
+}
+
+.fuel .indicator {
+    stroke-width: 2px !important;
+}
+
+.small .axis g text {
+    font: 15px 'Play';
+}
+
+.big .axis g text {
+    font: 18px 'Play';
+}
+
+.gauge .indicator {
+    stroke: #eee;
+    fill: #eee;
+    stroke-width: 4px;
+}
+
+/* css formats for the segment display */
+
+.segdisplay .on {
+    fill: #eee;
+    filter: none !important;
+}
+
+.segdisplay .off {
+    fill: #eee;
+    opacity: 0.3;
+    filter: none !important;
+}

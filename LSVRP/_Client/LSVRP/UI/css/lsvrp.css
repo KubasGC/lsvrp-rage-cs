@@ -1,0 +1,216 @@
+html, body
+{
+    height: 100%;
+    margin: 0;
+    /* background-color: #f1f1f1; */
+    -moz-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+button:focus {
+    outline: none;
+}
+
+@font-face {
+    font-family: "Quicksand";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Quicksand/Quicksand-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Pricedown";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Pricedown.ttf");
+}
+
+#loading-container {
+    width: 200px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.font-quicksand {
+    font-family: Quicksand, sans-serif;
+}
+
+.font-bebas {
+    font-family: Bebas, sans-serif;
+}
+
+.main-container {
+    min-height: 98%;
+}
+
+.right-sidebar {
+    float: right;
+    text-align: right;
+}
+
+.right-bottom-sidebar {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: lightblue;
+    text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+.lsvrp-placeholder {
+    width: 45%;
+    margin-right: 0px;
+    opacity: 0.8;
+}
+
+.cursor-info {
+    float: left;
+    font-family: Quicksand, sans-serif;
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.modal-box {
+    min-width: 300px;
+    max-width: 600px;
+    /* SHADOW */
+    -webkit-box-shadow: 10px 10px 19px 1px rgba(0,0,0,0.19);
+    -moz-box-shadow: 10px 10px 19px 1px rgba(0,0,0,0.19);
+    box-shadow: 10px 10px 19px 1px rgba(0,0,0,0.19);
+
+}
+
+.modal-box .modal-box-header {
+    height: 40px;
+    line-height: 40px;
+    background: rgba(81, 85, 88, 1.0);
+    color: rgba(255, 255, 255, 1.0);
+    text-align: left;
+    padding-left: 15px;
+    border-radius: 5px 5px 0 0;
+    cursor: move;
+    font-family: Quicksand, sans-serif;
+}
+
+.modal-box-header .loading {
+    float: right;
+    margin-right: 15px;
+    margin-top: 20px;
+    display: none;
+}
+
+.modal-box .modal-box-content {
+    min-height: 100px;
+    background: rgba(255, 255, 255, 1.0);
+    border-radius: 0 0 5px 5px;
+}
+
+.modal-box .modal-box-padding {
+    padding: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #acacac;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a2a2a2;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #919191;
+}
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    border: 0px none #ffffff;
+    border-radius: 48px;
+}
+::-webkit-scrollbar-track:hover {
+    background: #ffffff;
+}
+::-webkit-scrollbar-track:active {
+    background: #ffffff;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
+/* SCUBE GRID LOADER */
+.sk-cube-grid {
+    margin: 15px auto 0;
+    width: 40px;
+    height: 40px;
+}
+
+.sk-cube-grid .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: #fff;
+    float: left;
+    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s; }
+.sk-cube-grid .sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube7 {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s; }
+.sk-cube-grid .sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+        -webkit-transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1);
+    } 35% {
+          -webkit-transform: scale3D(0, 0, 1);
+          transform: scale3D(0, 0, 1);
+      }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+        -webkit-transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1);
+    } 35% {
+          -webkit-transform: scale3D(0, 0, 1);
+          transform: scale3D(0, 0, 1);
+      }
+}

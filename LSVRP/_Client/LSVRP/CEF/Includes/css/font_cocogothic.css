@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'CocoGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('CocoGothic'), local('CocoGothicRegular'), url('../fonts/cocogothic/cocogothicregular.woff') format('woff'), url('../fonts/cocogothic/cocogothicregular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'CocoGothic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('CocoGothic'), local('CocoGothicBold'), url('../fonts/cocogothic/cocogothicbold.woff') format('woff'), url('../fonts/cocogothic/cocogothicbold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'CocoGothic';
+  font-style: normal;
+  font-weight: 300;
+  src: local('CocoGothic'), local('CocoGothicLight'), url('../fonts/cocogothic/cocogothiclight.woff') format('woff'), url('../fonts/cocogothic/cocogothiclight.woff2') format('woff2');
+}

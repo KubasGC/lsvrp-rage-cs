@@ -1,0 +1,183 @@
+﻿<html>
+<head>
+	<title>LSVRP.pl - Logowanie...</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../Includes/css/login.css">
+	<script src="../Includes/js/jquery.js"></script>
+	<script src="../Includes/js/source.js"></script>
+	<script>
+	    jQuery(function($) {
+	        $("#ButtonID").click(function() {
+
+	            var Username = $("#username").val();
+	            var Password = $("#password").val();
+	            if (Username.length > 2 && Password.length > 2) {
+	                Login_ToggleButton(true);
+	                mp.trigger("cef.login.TryLogin", Username, Password, $("#checkbox_remember").prop('checked'));
+	            }
+	        });
+	    });
+
+	    function GetElementInsideContainer(containerID, childID) {
+	        var elm = document.getElementById(childID);
+	        var parent = elm ? elm.parentNode : {};
+	        return (parent.id && parent.id === containerID) ? elm : {};
+	    }
+
+	    function LoadCharacters(charInfo, oocName, adminLevel, vPoints, pOnline) {
+	        var data = JSON.parse(charInfo);
+	        var outputString = "";
+	        for (var i = 0; i < data.length; i++) {
+	            outputString += `<div class="rowek" charid="${data[i].Id}" id="${data[i].Id}">
+                        <div class="char">${data[i].Name} ${data[i].Lastname}<br><div class="gender">${
+	                data[i].Sex == 1 ? "Mężczyzna" : "Kobieta"}</div></div><div class="cash">$${data[i].Cash
+	                }</div><div class="hours">${Math.floor(data[i].OnlineTime / 3600)}h</div>
+                    </div>`;
+	        }
+	        outputString += '<div class="play" id="button-enter" >Wejdź do gry!</div>';
+	        var outputStringFormatted = $(outputString);
+	        $("#CharactersContent").append(outputStringFormatted);
+	        document.getElementById("oocName").innerHTML = oocName;
+	        document.getElementById("adminLevel").innerHTML = adminLevel;
+	        document.getElementById("vPoints").innerHTML = vPoints + " vPoints!";
+	        document.getElementById("pOnline").innerHTML = pOnline + " graczy online";
+
+	        jQuery(function(SomeTest) {
+	            $('.rowek').on("click",
+	                function() {
+	                    $('.rowek').removeClass("active");
+	                    $(this).addClass("active");
+	                });
+
+	            $("#button-enter").click(function() {
+	                var CharID = $(".rowek.active").attr("charid");
+	                if (typeof CharID !== typeof undefined && CharID !== false) {
+	                    $("#button-enter").hide();
+	                    mp.trigger("cef.choosechar.characterChoosed", CharID);
+	                    mp.trigger("client.dialog.togglechat", false);
+	                }
+	            });
+	        });
+
+
+	    }
+
+	    function ShowCharList() {
+	        var zoomOne = document.getElementsByClassName('login-box-left')[0];
+	        zoomOne.removeAttribute('animationName');
+	        zoomOne.style.animationName = 'login6';
+	        zoomOne.classList.add('anim-char1');
+
+	        var zoomOne2 = document.getElementsByClassName('login-box-right')[0];
+	        zoomOne2.removeAttribute('animationName');
+	        zoomOne2.style.animationName = 'login7';
+	        zoomOne2.classList.add('anim-char2');
+
+	        var zoomOne3 = document.getElementsByClassName('character-choose')[0];
+	        zoomOne3.removeAttribute('animationName');
+	        zoomOne3.style.display = "block";
+	        zoomOne3.style.animationName = 'login8';
+	        //zoomOne3.style.display = "block";
+	        zoomOne3.classList.add('anim-char3');
+	        jQuery(function($) {
+	            mp.trigger("cef.choosechar.charactersReady");
+	        });
+	    }
+
+	    function showNoCharInfo() {
+	        var zoomOne3 = document.getElementsByClassName('character-choose')[0];
+	        zoomOne3.style.display = "none";
+	        document.getElementById("noChar").style.display = "block";
+	    }
+
+	    function Login_ToggleButton(state) {
+	        if (state)
+	            $("#ButtonID").hide();
+	        else
+	            $("#ButtonID").show();
+
+	    }
+
+	    function Login_FillForm(username, password) {
+	        $("#checkbox_remember").prop('checked', true);
+	        $("#username").val(username);
+	        $("#password").val(password);
+	    }
+	</script>
+
+</head>
+<body>
+<div class="noCharInfo" id="noChar">
+	<center>
+		<img src="../Includes/images/logo.png"/><br>
+		<font style="color: white; text-shadow:
+		-1px -1px 0 #000,  
+		 1px -1px 0 #000,
+		 -1px 1px 0 #000,
+		  1px 1px 0 #000; font-size: 24px;">Aby rozpocząć rozgrywkę musisz utworzyć postać w panelu gracza.<br>LSVRP.pl</font>
+	</center>
+</div>
+<div class="login-box-left">
+	<div class="login-box-left-content">
+		<img src="../Includes/images/logo.png" class="login-box-logo"/>
+		<center>
+			<br><br><br><br><br><br><br><br><br><br>
+			<input type="text" placeholder="Login..." id="username" onclick='mp.trigger("client.dialog.togglechat", true);'/><br><br>
+			<input type="password" placeholder="Hasło" id="password" onclick='mp.trigger("client.dialog.togglechat", true);'/><br>
+			<br />
+			<input type="checkbox" value="true" id="checkbox_remember" /> Zapamiętaj mnie<br />
+			<button class="login-button" id="ButtonID">
+				ZALOGUJ
+			</button>
+		</center>
+	</div>
+</div>
+<div class="login-box-right">
+	<div class="login-box-right-content">
+		<p class="right-title">
+			Dzienniczek
+		</p>
+		<p class="right-subtitle">
+			San Andreas
+		</p><br><br>
+		<img src="../Includes/images/timeline.png" class="right-timeline"/>
+		<div class="right-date1-num">
+			5<p class="right-date2-month">kwietnia</p>
+		</div>
+		<div class="right-date2-num">
+			31<p class="right-date2-month">marca</p>
+		</div>
+		<!--<div class="right-date2-month">
+		listopad
+		</div>-->
+		<div class="right-text"><i>
+			Od startu wprowadziliśmy wiele kluczowych poprawek aby poprawić Wasz komfort gry. Zaczynamy pracować nad dodatkowymi możliwościami skryptu.<br><br>~ekipa LSVRP.pl</i></div>
+
+	</div>
+</div>
+<div class="character-choose">
+	<div class="character-choose-left">
+		<div class="name" id="oocName"></div>
+		<div class="rank-name" id="adminLevel"></div>
+		<div class="vpoints" id="vPoints"></div>
+		<div class="info"><p class="text">Witaj na serwerze!<br><br>Pamiętaj o zasadach jakie na nim obowiązują, znajdziesz je w głównym regulaminie serwera.</p></div>
+		<div class="online" id="pOnline">
+
+		</div>
+	</div>
+	<div class="character-choose-center" style="display: grid">
+		<div class="table">
+			<table id="charsTable">
+				<thead class="thead">
+				<td class="char">Postać</td><td class="cash">Stan konta</td><td class="hours">Online</td>
+				</thead>
+
+				<tbody class="tbody" id="CharactersContent">
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
